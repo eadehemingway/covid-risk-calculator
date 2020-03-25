@@ -202,3 +202,5 @@ export const T = {
   H2,
   H3,
 };
+
+export default T;

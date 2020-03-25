@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import InputWrapper from './InputWrapper';
-import { T } from '../typography';
+import { T } from './Typography';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
 export default function SexInput() {

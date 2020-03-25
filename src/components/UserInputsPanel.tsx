@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { T } from '../typography';
-import AgeInput from './AgeInput';
-import SexInput from './SexInput';
-import ConditionsInput from './ConditionsInput';
+import { T } from './Typography';
+import Age from './AgeInput';
+import Sex from './SexInput';
+import Conditions from './Conditions';
 
 export default function UserInputsPanel() {
   return (
@@ -13,11 +13,11 @@ export default function UserInputsPanel() {
         high is
         <br /> my risk?
       </Title>
-      <div>
-        <AgeInput />
-        <SexInput />
-        <ConditionsInput />
-      </div>
+      <InputWrapper>
+        <Conditions />
+        <Age />
+        <Sex />
+      </InputWrapper>
       <ButtonWrapper>
         <ButtonStyled>Calculate</ButtonStyled>
       </ButtonWrapper>
@@ -38,6 +38,10 @@ const Container = styled.div`
 const Title = styled(T.H1)`
   margin: 20px;
   margin-right: 0;
+`;
+
+const InputWrapper = styled.div`
+  border-bottom: 1px solid #ff7c03;
 `;
 
 const ButtonStyled = styled.button`
