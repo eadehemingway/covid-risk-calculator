@@ -21,9 +21,9 @@ export default function PageOne({
   return (
     <VisContainer>
       <TextInVisualisation
-        baseRate={baseRate}
-        relativeRisk={relativeRisk}
-        setRelativeRisk={setRelativeRisk}
+        base={baseRate}
+        noCovid={relativeRisk}
+        withCovid={relativeRisk}
       />
 
       <ForceDirected id="force-directed" deathRate={baseRate} position={0} />

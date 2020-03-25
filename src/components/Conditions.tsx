@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import * as TS from '../types';
@@ -15,6 +15,22 @@ interface Props {
 export default function ConditionsInput({ conditions, setConditions }: Props) {
   const [value, setValue] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleClick, true);
+    return () => {
+      document.body.removeEventListener('click', handleClick, true);
+    };
+  });
+
+  function handleClick(e) {
+    // if (e.target.id === 'input-dropdown') return;
+    setTimeout(() => {
+      if (dropdownOpen) {
+        setDropdownOpen(false);
+      }
+    });
+  }
 
   function handleOpenDropdown() {
     setDropdownOpen(!dropdownOpen);
@@ -40,8 +56,8 @@ export default function ConditionsInput({ conditions, setConditions }: Props) {
   }
 
   return (
-    <InputWrapper title="Pre-existing Conditions:">
-      <Container>
+    <InputWrapper title="Pre-existing conditions">
+      <Container id="input-dropdown">
         <Input
           value={value}
           onChange={handleChange}
