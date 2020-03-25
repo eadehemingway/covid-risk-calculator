@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import ForceDirected from './ForceDirected';
-import * as d3 from 'd3';
 import { T } from '../typography';
+import SliderPanel from './SliderPanel';
 
-export default function Visualisations() {
+export default function TextInVisualisation() {
   return (
     <Container>
       <ForceTitles>
@@ -14,10 +13,12 @@ export default function Visualisations() {
         </ForceTitleStyled>
         <ForceTitleStyled>if you get Covid 19:</ForceTitleStyled>
       </ForceTitles>
-      <ForceDirected deathRate={0.1} position={0} />
-      <ForceDirected deathRate={2.2} position={1} />
-      <ForceDirected deathRate={25} position={2} />
-      <StyledSvg id="visualisations" />
+      <StatSummaries>
+        <Percentage>0.2%</Percentage>
+        <Percentage>0.2%</Percentage>
+        <Percentage>0.2%</Percentage>
+      </StatSummaries>
+      <SliderPanel />
     </Container>
   );
 }
@@ -28,17 +29,19 @@ const ForceTitleStyled = styled(T.P3)`
   font-size: 12px;
   max-width: 200px;
 `;
+const Percentage = styled(T.H1)`
+  padding-left: 90px;
+`;
 
 const Container = styled.div`
   display: flex;
-  flex: 2.5;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 const ForceTitles = styled.div`
   display: flex;
 `;
-
-const StyledSvg = styled.svg`
-  position: absolute;
-  width: 900px;
-  height: 600px;
+const StatSummaries = styled.div`
+  display: flex;
 `;

@@ -52,7 +52,7 @@ export default function ForceDirected({ deathRate, position }: Props) {
         );
       });
 
-    const svg = d3.select('#visualisations');
+    const svg = d3.select('svg');
 
     svg
       .selectAll(`.circle-${position}`)

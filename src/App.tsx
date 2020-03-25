@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import './App.css';
 import UserInputsPanel from './components/UserInputsPanel';
-import Visualisations from './components/Visualisations';
+import Visualisations from './components/VisualisationPanel';
 
 export default function App() {
   return (
@@ -16,6 +16,6 @@ export default function App() {
 
 const Container = styled.div`
   height: 100vh;
-  width: 100vw;
+  max-width: 100vw;
   display: flex;
 `;
