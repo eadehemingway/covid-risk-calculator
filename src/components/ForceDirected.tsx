@@ -13,9 +13,17 @@ export default function ForceDirected({ deathRate, position, title }: Props) {
 
   useEffect(() => {
     const data = d3.range(100).map((n, i) => {
-      const isDeathCircle = n >= deathRate;
-      const fillColor = isDeathCircle ? 'none' : '#C4C4C4';
-      return { id: i, num: n, fillColor };
+      if (Number.isInteger(deathRate)) {
+        const isDeathCircle = n <= deathRate;
+        const fillColor = isDeathCircle ? '#C4C4C4' : 'none';
+        return { id: i, fillColor };
+      } else {
+        // i.e. death rate is a decimal
+        if (n >= Math.ceil(deathRate)) return { id: i, fillColor: 'none' };
+        if (n < Math.floor(deathRate)) return { id: i, fillColor: '		#B0B0B0' };
+
+        return { id: i, fillColor: '#E0E0E0' };
+      }
     });
     setData(data);
   }, [deathRate]);
@@ -77,7 +85,7 @@ export default function ForceDirected({ deathRate, position, title }: Props) {
     //   .attr('fill', 'snow')
     //   .attr('text-anchor', 'middle')
     //   .attr('dominant-baseline', 'middle');
-  }, [data, position, title]);
+  }, [data, deathRate, position, title]);
 
   return <div></div>;
 }

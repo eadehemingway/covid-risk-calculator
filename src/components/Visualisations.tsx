@@ -11,8 +11,8 @@ export default function Visualisations() {
   }, []);
   return (
     <Container>
-      <ForceDirected deathRate={5} position={0} title="test" />
-      <ForceDirected deathRate={15} position={1} title="test" />
+      <ForceDirected deathRate={0.1} position={0} title="test" />
+      <ForceDirected deathRate={2.2} position={1} title="test" />
       <ForceDirected deathRate={25} position={2} title="test" />
       <svg id="visualisations" />
     </Container>
