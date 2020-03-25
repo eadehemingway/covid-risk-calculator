@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { T } from './Typography';
-import arrow from '../assets/images/down-arrow.svg';
 
 interface Props {
   children: any;
@@ -10,15 +9,9 @@ interface Props {
 }
 
 export default function InputWrapper({ children, title }: Props) {
-  const [dropDownOpen, setDropDownOpen] = useState(false);
-  const height = dropDownOpen ? 300 : 60;
-
   return (
-    <Container style={{ height }}>
-      <Header onClick={() => setDropDownOpen(!dropDownOpen)}>
-        <Title>{title}</Title>
-        <ArrowStyled src={arrow} dropDownOpen={dropDownOpen} />
-      </Header>
+    <Container>
+      <Title>{title}</Title>
       {children}
     </Container>
   );
@@ -29,7 +22,6 @@ const Container = styled.div`
   border: 1px solid #ff7c03;
   transition: height 0.5s;
   padding: 10px;
-  overflow: hidden;
 `;
 
 const Title = styled(T.P1)`

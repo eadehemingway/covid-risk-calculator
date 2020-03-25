@@ -17,11 +17,16 @@ export default function Drawer({
   dropdownOpen,
 }: Props) {
   const options = rawOptions.filter(option => {
-    const filterByInputValue = option.indexOf(inputValue) > -1;
+    const filterByInputValue =
+      option.toLowerCase().indexOf(inputValue.toLowerCase()) > -1;
     const filterBySelectedOption = selectedOptions.indexOf(option) === -1;
     if (filterByInputValue && filterBySelectedOption) return true;
     return false;
   });
+
+  if (options.length === 0) {
+    return null;
+  }
 
   return (
     <Container open={dropdownOpen}>
@@ -45,6 +50,9 @@ const Container = styled.div`
   overflow: scroll;
   position: absolute;
   z-index: 2;
+  top: 50px;
+  max-width: 250px;
+  width: 100%;
   ${({ open }: Container) => {
     if (open) {
       return `

@@ -33,22 +33,22 @@ export default function ConditionsInput() {
   }
 
   return (
-    <InputWrapper title="Conditions">
+    <InputWrapper title="Pre-existing conditions">
       <Container>
-        <input
+        <Input
           value={value}
           onChange={handleChange}
           onClick={handleOpenDropdown}
-        />
-        <Selected
-          selectedOptions={selectedOptions}
-          unselectOption={handleUnselectOption}
         />
         <ConditionsDropdown
           inputValue={value}
           selectedOptions={selectedOptions}
           selectOption={handleSelectOption}
           dropdownOpen={dropdownOpen}
+        />
+        <Selected
+          selectedOptions={selectedOptions}
+          unselectOption={handleUnselectOption}
         />
       </Container>
     </InputWrapper>
@@ -57,6 +57,17 @@ export default function ConditionsInput() {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
+`;
+
+const Input = styled.input`
+  padding: 0 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1;
+  height: 45px;
+  max-width: 250px;
+  width: 100%;
+  border-radius: 0;
 `;

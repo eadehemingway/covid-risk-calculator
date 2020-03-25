@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { T } from './Typography';
-import AgeInput from './AgeInput';
-import SexInput from './SexInput';
-import ConditionsInput from './ConditionsInput';
+import Age from './AgeInput';
+import Sex from './SexInput';
+import Conditions from './Conditions';
 
 export default function UserInputsPanel() {
   return (
@@ -14,9 +14,9 @@ export default function UserInputsPanel() {
         <br /> my risk?
       </Title>
       <div>
-        <AgeInput />
-        <SexInput />
-        <ConditionsInput />
+        <Age />
+        <Sex />
+        <Conditions />
       </div>
       <ButtonWrapper>
         <ButtonStyled>Calculate</ButtonStyled>
