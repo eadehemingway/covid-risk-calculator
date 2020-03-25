@@ -65,4 +65,5 @@ const RightArrowStyled = styled.img`
   position: absolute;
   right: 0;
   top: 40%;
+  cursor: pointer;
 `;

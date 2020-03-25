@@ -26,7 +26,7 @@ export default function ColumnChart({ id }: Props) {
   }, []);
 
   useEffect(() => {
-    const bottomOfGraph = 400;
+    const bottomOfGraph = 250;
     const xOffset = 150;
     const stringArr = data.map(d => d.id);
 
@@ -76,5 +76,5 @@ export default function ColumnChart({ id }: Props) {
       .attr('y', d => bottomOfGraph - y_scale(d.num) - axisThickness / 2);
   }, [data]);
 
-  return <div></div>;
+  return null;
 }

@@ -32,4 +32,5 @@ const LeftArrowStyled = styled.img`
   position: absolute;
   left: 0;
   top: 40%;
+  cursor: pointer;
 `;

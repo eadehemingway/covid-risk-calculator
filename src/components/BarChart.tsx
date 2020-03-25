@@ -11,10 +11,12 @@ export default function BarChart({ id }: Props) {
 
   useEffect(() => {
     const data = d3.range(30).map((n, i) => {
+      const someNum = i + Math.random() * 10;
+      const color = someNum / 1.2 > i ? '#C4C4C4' : '#FFD9BE';
       return {
         id: `condition-${i}`,
         num: n * n,
-        fillColor: 'none',
+        fillColor: color,
       };
     });
     setData(data);
@@ -46,8 +48,9 @@ export default function BarChart({ id }: Props) {
     const axisThickness = 3;
     d3.select('.axis path')
       .attr('stroke-width', axisThickness)
-      .attr('stroke', '#6A4019')
-      .attr('z-index', 1);
+      .attr('stroke', '#6A4019');
+
+    d3.selectAll('.axis text').attr('font-family', 'abril-Fatface');
 
     const rects = svg
       .selectAll(`rect`)
@@ -56,7 +59,7 @@ export default function BarChart({ id }: Props) {
       .append('rect')
       .attr('width', 0)
       .attr('height', y_scale.bandwidth())
-      .attr('fill', '#C4C4C4')
+      .attr('fill', d => d.fillColor)
       .attr('x', xOffset + axisThickness / 2)
       .attr('y', d => y_scale(d.id) + yOffset);
 
@@ -66,5 +69,5 @@ export default function BarChart({ id }: Props) {
       .attr('width', d => x_scale(d.num));
   }, [data]);
 
-  return <div></div>;
+  return null;
 }
