@@ -54,11 +54,10 @@ const Container = styled.div`
   position: absolute;
   max-height: 0;
   overflow: scroll;
-  position: absolute;
   z-index: 2;
   top: 50px;
   max-width: 250px;
-  width: 100%;
+  min-width: 100%;
   ${({ open }: Container) => {
     if (open) {
       return `

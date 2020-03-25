@@ -29,6 +29,7 @@ export default function ConditionsInput({ conditions, setConditions }: Props) {
   function handleSelectCondition(condition: TS.Condition) {
     const newConditions = conditions.concat(condition);
     setConditions(newConditions);
+    setDropdownOpen(false);
   }
 
   function handleUnselectCondition(condition: TS.Condition) {
@@ -63,14 +64,14 @@ export default function ConditionsInput({ conditions, setConditions }: Props) {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   width: 100%;
 `;
 
 const Input = styled.input`
   border: 1px solid #ff7c03;
-
+  outline-color: #ff7c03;
   padding: 0 10px;
   margin-bottom: 20px;
   font-size: 16px;

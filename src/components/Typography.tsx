@@ -53,7 +53,7 @@ const P3 = styled.p`
 `;
 
 const H1 = styled.h1`
-  font-size: 4.5em;
+  font-size: 3.5em;
   font-family: 'abril-Fatface';
   color: #6a4019;
   line-height: 1.25;
@@ -68,7 +68,7 @@ const H1 = styled.h1`
 `;
 
 const H2 = styled.h2`
-  font-size: 3.5em;
+  font-size: 3em;
   font-family: 'abril-Fatface';
   color: #6a4019;
   line-height: 1.25;
@@ -83,7 +83,7 @@ const H2 = styled.h2`
 `;
 
 const H3 = styled.h3`
-  font-size: 3.2em;
+  font-size: 2.5em;
   font-family: 'abril-Fatface';
   color: #6a4019;
   line-height: 1.25;

@@ -18,7 +18,13 @@ export default function SexInput({ sex, setSex }: Props) {
         {sexArr.map(s => {
           const textColor = sex === s ? '#ff7c03' : '#6a4019';
           return (
-            <RadioButton value={s} rootColor="#6a4019" pointColor="#ff7c03">
+            <RadioButton
+              value={s}
+              rootColor="#6a4019"
+              pointColor="#ff7c03"
+              iconSize={20}
+              iconInnerSize={10}
+            >
               <P3Styled style={{ color: textColor }}>{s}</P3Styled>
             </RadioButton>
           );

@@ -27,11 +27,12 @@ export default function SelectedCondition({
 }
 
 const Container = styled.div`
-  padding: 0 5px;
+  padding: 5px 7px;
   border-radius: 3px;
   display: flex;
   align-items: center;
-  background-color: #fe9839;
+  border: 1px solid #ff7c03;
+
   margin: 2px;
 `;
 
