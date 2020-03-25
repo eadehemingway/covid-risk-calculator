@@ -13,6 +13,9 @@ export default function Visualisation({
   relativeRisk,
   setRelativeRisk,
 }) {
+  const base = baseRate;
+  const noCovid = baseRate * 1.1;
+  const withCovid = baseRate * relativeRisk;
   function movePageRight() {
     setPage(page + 1);
   }
@@ -24,19 +27,11 @@ export default function Visualisation({
     if (page === 1) {
       return (
         <>
+          <ForceDirected id="force-directed" deathRate={base} position={0} />
+          <ForceDirected id="force-directed" deathRate={noCovid} position={1} />
           <ForceDirected
             id="force-directed"
-            deathRate={baseRate}
-            position={0}
-          />
-          <ForceDirected
-            id="force-directed"
-            deathRate={baseRate * relativeRisk}
-            position={1}
-          />
-          <ForceDirected
-            id="force-directed"
-            deathRate={baseRate * relativeRisk}
+            deathRate={withCovid}
             position={2}
           />
           <RightArrowStyled src={arrow} onClick={movePageRight} />
@@ -68,9 +63,9 @@ export default function Visualisation({
     if (page === 1) {
       return (
         <TextInVisualisation
-          baseRate={baseRate}
-          relativeRisk={relativeRisk}
-          setRelativeRisk={setRelativeRisk}
+          base={base}
+          noCovid={noCovid}
+          withCovid={withCovid}
         />
       );
     }

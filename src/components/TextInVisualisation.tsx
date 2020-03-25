@@ -3,16 +3,12 @@ import styled from 'styled-components';
 import { T } from './Typography';
 
 interface Props {
-  baseRate: number;
-  relativeRisk: number;
-  setRelativeRisk: (relativeRisk: number) => void;
+  base: number;
+  noCovid: number;
+  withCovid: number;
 }
 
-export default function TextInVisualisation({
-  baseRate,
-  relativeRisk,
-  setRelativeRisk,
-}) {
+export default function TextInVisualisation({ base, noCovid, withCovid }) {
   return (
     <Container>
       <ForceTitles>
@@ -23,9 +19,9 @@ export default function TextInVisualisation({
         <ForceTitleStyled>if you get Covid 19:</ForceTitleStyled>
       </ForceTitles>
       <StatSummaries>
-        <Percentage>{baseRate}%</Percentage>
-        <Percentage>{baseRate * relativeRisk}%</Percentage>
-        <Percentage>{baseRate * relativeRisk}%</Percentage>
+        <Percentage>{base}%</Percentage>
+        <Percentage>{noCovid}%</Percentage>
+        <Percentage>{withCovid}%</Percentage>
       </StatSummaries>
     </Container>
   );

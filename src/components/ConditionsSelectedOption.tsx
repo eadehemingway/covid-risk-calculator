@@ -33,6 +33,7 @@ const Container = styled.div`
   align-items: center;
   background-color: #fe9839;
   margin: 2px;
+  cursor: pointer;
 `;
 
 const Image = styled.img`

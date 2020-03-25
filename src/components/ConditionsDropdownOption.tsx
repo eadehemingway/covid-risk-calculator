@@ -26,4 +26,5 @@ export default function ConditionsDropdownConditions({
 
 const Container = styled.div`
   padding: 5px;
+  cursor: pointer;
 `;
