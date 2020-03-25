@@ -7,13 +7,19 @@ interface Props {
 
 export default function ColumnChart({ id }: Props) {
   const [data, setData] = useState([]);
-
+  const age = 12;
   useEffect(() => {
     const data = d3.range(30).map((n, i) => {
+      const num = n < 15 ? n : 30 - n;
+      const cappedNum = num > 13 ? 13 : num;
+      const bottomCappedNum = cappedNum < 4 ? 0 : cappedNum;
+
+      const color = i === age ? 'orange' : '#C4C4C4';
+
       return {
         id: `condition-${i}`,
-        num: n * 10,
-        fillColor: 'none',
+        num: bottomCappedNum * 10,
+        fillColor: color,
       };
     });
     setData(data);
@@ -26,13 +32,13 @@ export default function ColumnChart({ id }: Props) {
 
     const y_scale = d3
       .scaleLinear()
-      .domain([bottomOfGraph, 0])
-      .rangeRound([0, 600]);
+      .domain([0, bottomOfGraph])
+      .rangeRound([0, 300]);
 
     const x_scale = d3
       .scaleBand()
       .domain(stringArr)
-      .range([500, 0])
+      .range([550, -50])
       .paddingInner(0.01);
 
     const svg = d3.select('svg');
@@ -57,7 +63,7 @@ export default function ColumnChart({ id }: Props) {
       .append('rect')
       .attr('width', 5)
       .attr('height', 0)
-      .attr('fill', 'orange')
+      .attr('fill', d => d.fillColor)
       .attr('x', (d, i) => {
         return x_scale(d.id) + xOffset;
       })
@@ -66,8 +72,8 @@ export default function ColumnChart({ id }: Props) {
     rects
       .transition()
       .duration(500)
-      .attr('height', d => d.num)
-      .attr('y', d => bottomOfGraph - d.num);
+      .attr('height', d => y_scale(d.num))
+      .attr('y', d => bottomOfGraph - y_scale(d.num));
   }, [data]);
 
   return <div></div>;

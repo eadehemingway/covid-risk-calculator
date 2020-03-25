@@ -18,10 +18,11 @@ export default function PageThree({ page, setPage }) {
 }
 
 const VisContainer = styled.div`
-  position: absolute;
+  /* position: absolute; */
+  width: 100%;
 `;
 const StyledSvg = styled.svg`
-  width: 850px;
+  width: 700px;
   height: 600px;
 `;
 

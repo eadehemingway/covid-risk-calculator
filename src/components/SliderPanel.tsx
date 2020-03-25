@@ -11,7 +11,7 @@ export default function SliderPanel({ relativeRisk, setRelativeRisk }: Props) {
 }
 
 const Container = styled.div`
-  height: 300px;
+  min-height: 200px;
   min-width: 100%;
   border-top: 1px solid #ff7c03;
 `;
