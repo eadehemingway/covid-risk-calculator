@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Slider from './Slider';
+import T from './Typography';
 
 interface Props {
   relativeRisk: number;
@@ -7,11 +9,33 @@ interface Props {
 }
 
 export default function SliderPanel({ relativeRisk, setRelativeRisk }: Props) {
-  return <Container></Container>;
+  return (
+    <Container>
+      <Title>
+        Change The <br />
+        Assumptions
+      </Title>
+      <Slider id="slider-one" />
+      <Slider id="slider-two" />
+      <SliderSvg id={`slider-one`} />;
+      <SliderSvg id={`slider-two`} />;
+    </Container>
+  );
 }
 
 const Container = styled.div`
   min-height: 200px;
   min-width: 100%;
   border-top: 1px solid #ff7c03;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const SliderSvg = styled.svg`
+  width: 200px;
+  height: 100px;
+`;
+const Title = styled(T.H3)`
+  margin-left: 30px;
+  margin-top: 30px;
 `;
