@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import * as TS from '../types';
 import Option from './ConditionsSelectedOption';
 
 interface Props {
-  selectedOptions: string[];
-  unselectOption: (option: string) => void;
+  selectedOptions: TS.Option[];
+  unselectOption: (option: TS.Option) => void;
 }
 
 export default function Selected({ selectedOptions, unselectOption }: Props) {
@@ -13,7 +14,7 @@ export default function Selected({ selectedOptions, unselectOption }: Props) {
 
   return (
     <Container>
-      {selectedOptions.map((option: string) => {
+      {selectedOptions.map((option: TS.Option) => {
         return <Option option={option} unselectOption={unselectOption} />;
       })}
     </Container>

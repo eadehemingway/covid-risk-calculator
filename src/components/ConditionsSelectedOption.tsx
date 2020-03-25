@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import * as TS from '../types';
 import { T } from './Typography';
 import cross from '../cross.svg';
 
 interface Props {
-  option: string;
-  unselectOption: (option: string) => void;
+  option: TS.Option;
+  unselectOption: (option: TS.Option) => void;
 }
 
 export default function SelectedOption({ option, unselectOption }: Props) {
@@ -17,7 +18,7 @@ export default function SelectedOption({ option, unselectOption }: Props) {
   return (
     <Container onClick={handleUnselectOption}>
       <Image src={cross} />
-      <T.P3>{option}</T.P3>
+      <T.P3>{option.name}</T.P3>
     </Container>
   );
 }

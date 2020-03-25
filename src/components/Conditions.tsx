@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import * as TS from '../types';
 import InputWrapper from './InputWrapper';
 import ConditionsDropdown from './ConditionsDropdown';
 import Selected from './ConditionsSelected';
@@ -8,7 +9,7 @@ import Selected from './ConditionsSelected';
 export default function ConditionsInput() {
   const [value, setValue] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<TS.Option[]>([]);
 
   function handleOpenDropdown() {
     setDropdownOpen(!dropdownOpen);
@@ -20,14 +21,14 @@ export default function ConditionsInput() {
     setValue(value);
   }
 
-  function handleSelectOption(option: string) {
+  function handleSelectOption(option: TS.Option) {
     const newOptions = selectedOptions.concat(option);
     setSelectedOptions(newOptions);
   }
 
-  function handleUnselectOption(option: string) {
-    const newOptions = selectedOptions.filter(op => {
-      return op !== option;
+  function handleUnselectOption(option: TS.Option) {
+    const newOptions = selectedOptions.filter(selected => {
+      return selected.name !== option.name;
     });
     setSelectedOptions(newOptions);
   }

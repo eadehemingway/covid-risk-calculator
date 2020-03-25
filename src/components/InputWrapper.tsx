@@ -19,7 +19,7 @@ export default function InputWrapper({ children, title }: Props) {
 
 const Container = styled.div`
   flex: 2;
-  border: 1px solid #ff7c03;
+  border-top: 1px solid #ff7c03;
   transition: height 0.5s;
   padding: 10px;
 `;
@@ -37,13 +37,4 @@ const ArrowStyled = styled.img`
   transition: transform 1s;
   ${({ dropDownOpen }: ArrowStyled) =>
     dropDownOpen ? 'transform: rotate(180deg)' : 'transform: rotate(0deg)'}
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 60px;
-  align-items: center;
-  margin-bottom: 50px;
 `;
