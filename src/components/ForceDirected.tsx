@@ -5,9 +5,10 @@ import * as d3 from 'd3';
 interface Props {
   deathRate: number;
   position: number;
+  title: string;
 }
 
-export default function ForceDirected({ deathRate, position }: Props) {
+export default function ForceDirected({ deathRate, position, title }: Props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,16 +21,17 @@ export default function ForceDirected({ deathRate, position }: Props) {
   }, [deathRate]);
 
   useEffect(() => {
-    const centerOfGravity = { x: 200 * position, y: 300 };
+    const x = 260 * position + 200;
+    const centerOfGravity = { x, y: 300 };
     const forceX = d3
       .forceX()
       .x(centerOfGravity.x)
-      .strength(0.3);
+      .strength(0.2);
 
     const forceY = d3
       .forceY()
       .y(centerOfGravity.y)
-      .strength(0.3);
+      .strength(0.2);
     const radius = 6;
 
     const collision = d3.forceCollide(radius * 3).strength(0.1);
@@ -63,7 +65,19 @@ export default function ForceDirected({ deathRate, position }: Props) {
       .attr('stroke', '#FE9839')
       .attr('stroke-width', 2)
       .attr('fill', d => d.fillColor);
-  }, [data, position]);
+
+    // svg
+    //   .append('text')
+    //   .text(title)
+    //   .attr('x', centerOfGravity.x)
+    //   .attr('y', centerOfGravity.y)
+    //   .attr('font-size', '70px')
+    //   .attr('font-weight', 'bold')
+    //   .attr('font-family', 'futura')
+    //   .attr('fill', 'snow')
+    //   .attr('text-anchor', 'middle')
+    //   .attr('dominant-baseline', 'middle');
+  }, [data, position, title]);
 
   return <div></div>;
 }
