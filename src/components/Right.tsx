@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import TextInVisualisation from './TextInVisualisation';
-import ForceDirectedVis from './ForceDirectedViz';
+import Visualisation from './Visualisation';
 import SliderPanel from './SliderPanel';
 
 export default function Right() {
+  const [page, setPage] = useState(1);
   return (
     <Container>
-      <TextInVisualisation />
-      <ForceDirectedVis />
-      <StyledSvg />
+      {/* <TextInVisualisation /> */}
+      <Visualisation page={page} setPage={setPage} />
       <SliderPanel />
     </Container>
   );
@@ -21,9 +21,4 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
-`;
-const StyledSvg = styled.svg`
-  position: absolute;
-  width: 850px;
-  height: 600px;
 `;

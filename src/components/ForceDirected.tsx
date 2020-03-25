@@ -5,9 +5,10 @@ import * as d3 from 'd3';
 interface Props {
   deathRate: number;
   position: number;
+  id: string;
 }
 
-export default function ForceDirected({ deathRate, position }: Props) {
+export default function ForceDirected({ deathRate, position, id }: Props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -52,19 +53,22 @@ export default function ForceDirected({ deathRate, position }: Props) {
         );
       });
 
-    const svg = d3.select('svg');
+    const svg = d3.select(`#${id}`);
 
     svg
       .selectAll(`.circle-${position}`)
       .data(data)
       .enter()
-      .append('circle')
-      .attr('r', radius)
+      .append('rect')
+      .attr('width', radius * 2)
+      .attr('height', radius * 2)
+      .attr('rx', 100)
+      .attr('ry', 100)
       .attr('class', `circle-${position}`)
       .attr('stroke', '#FE9839')
       .attr('stroke-width', 2)
       .attr('fill', d => d.fillColor);
-  }, [data, deathRate, position]);
+  }, [data, deathRate, id, position]);
 
   return <div></div>;
 }
