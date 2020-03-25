@@ -39,7 +39,7 @@ export default function ColumnChart({ id }: Props) {
       .scaleBand()
       .domain(stringArr)
       .range([550, -50])
-      .paddingInner(0.01);
+      .paddingInner(0.5);
 
     const svg = d3.select('svg');
     const x_axis = d3
@@ -52,16 +52,16 @@ export default function ColumnChart({ id }: Props) {
       .attr('class', 'axis')
       .attr('transform', `translate(${xOffset}, ${bottomOfGraph})`)
       .call(x_axis);
-
+    const axisThickness = 5;
     d3.select('.axis path')
-      .attr('stroke-width', 5)
-      .attr('stroke', 'brown');
+      .attr('stroke-width', axisThickness)
+      .attr('stroke', '#6A4019');
     const rects = svg
       .selectAll(`rect`)
       .data(data)
       .enter()
       .append('rect')
-      .attr('width', 5)
+      .attr('width', x_scale.bandwidth())
       .attr('height', 0)
       .attr('fill', d => d.fillColor)
       .attr('x', (d, i) => {
@@ -73,7 +73,7 @@ export default function ColumnChart({ id }: Props) {
       .transition()
       .duration(500)
       .attr('height', d => y_scale(d.num))
-      .attr('y', d => bottomOfGraph - y_scale(d.num));
+      .attr('y', d => bottomOfGraph - y_scale(d.num) - axisThickness / 2);
   }, [data]);
 
   return <div></div>;
