@@ -29,6 +29,8 @@ export default function Selected({ conditions, unselectCondition }: Props) {
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   padding-left: 10px;
 `;

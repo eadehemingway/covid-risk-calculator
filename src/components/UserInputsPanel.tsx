@@ -20,7 +20,7 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
     const ageVariant = ageToMultiplier(age);
     const sexVariant = sexToMultiplier(sex);
     const conditionsVariant = conditionsToMultiplier(conditions);
-    const baseRate = calculateRate(ageVariant, sexVariant, conditionsVariant);
+    const baseRate = multiplyRate(ageVariant, sexVariant, conditionsVariant);
     setBaseRate(baseRate);
   }
 
@@ -38,7 +38,7 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
     }, 1);
   }
 
-  function calculateRate(age: number, sex: number, conditions: number) {
+  function multiplyRate(age: number, sex: number, conditions: number) {
     return age * sex * conditions;
   }
 

@@ -28,10 +28,8 @@ export default function SelectedCondition({
 
 const Container = styled.div`
   padding: 0 5px;
-  height: 25px;
   border-radius: 3px;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #fe9839;
   margin: 2px;
