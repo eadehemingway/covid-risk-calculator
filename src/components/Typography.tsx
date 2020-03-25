@@ -8,7 +8,7 @@ interface IProps {
 const P = styled.p`
   font-size: 1.8em;
   line-height: 1.6;
-  font-family: 'abril-Fatface';
+  font-family: 'Lexend';
   color: #6a4019;
   ${props => props.mods && modifiers(props.mods)}
   @media only screen and (max-width: 768px) {
@@ -19,7 +19,7 @@ const P = styled.p`
 const P1 = styled.p`
   font-size: 1.6em;
   line-height: 1.6;
-  font-family: 'abril-Fatface';
+  font-family: 'Lexend';
   color: #6a4019;
   ${props => props.mods && modifiers(props.mods)}
   @media only screen and (max-width: 768px) {
@@ -30,7 +30,7 @@ const P1 = styled.p`
 const P2 = styled.p`
   font-size: 1.4em;
   line-height: 1.4;
-  font-family: 'abril-Fatface';
+  font-family: 'Lexend';
   color: #6a4019;
   @media only screen and (max-width: 768px) {
     font-size: 1.2em;
@@ -44,7 +44,7 @@ const P2 = styled.p`
 const P3 = styled.p`
   font-size: 1.2em;
   line-height: 1.4;
-  font-family: 'abril-Fatface';
+  font-family: 'Lexend';
   color: #6a4019;
   ${props => props.mods && modifiers(props.mods)}
   @media only screen and (max-width: 768px) {

@@ -11,7 +11,7 @@ interface Props {
 export default function InputWrapper({ children, title }: Props) {
   return (
     <Container>
-      <Title>{title}</Title>
+      <UserTitle>{title}</UserTitle>
       {children}
     </Container>
   );
@@ -22,10 +22,10 @@ const Container = styled.div`
   border-top: 1px solid #ff7c03;
   transition: height 0.5s;
   padding: 10px;
-`;
-
-const Title = styled(T.P1)`
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 interface ArrowStyled {
@@ -37,4 +37,8 @@ const ArrowStyled = styled.img`
   transition: transform 1s;
   ${({ dropDownOpen }: ArrowStyled) =>
     dropDownOpen ? 'transform: rotate(180deg)' : 'transform: rotate(0deg)'}
+`;
+
+export const UserTitle = styled(T.P3)`
+  margin-bottom: 20px;
 `;

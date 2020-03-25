@@ -13,8 +13,7 @@ interface Props {
 export default function SexInput({ sex, setSex }: Props) {
   const sexArr = ['Male', 'Female'];
   return (
-    <InputWrapper title="Sex">
-      <T.P3> What was your assigned sex at birth?</T.P3>
+    <InputWrapper title="Assigned sex at birth:">
       <RadioGroup onChange={(e: any) => setSex(e)} horizontal>
         {sexArr.map(s => {
           const textColor = sex === s ? '#ff7c03' : '#6a4019';

@@ -50,9 +50,9 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
         <br /> my risk?
       </Title>
       <Inputs>
-        <Conditions conditions={conditions} setConditions={setConditions} />
         <Age age={age} setAge={setAge} />
         <Sex sex={sex} setSex={setSex} />
+        <Conditions conditions={conditions} setConditions={setConditions} />
       </Inputs>
       <ButtonStyled onClick={calculateBaseRate}>Calculate</ButtonStyled>
     </Container>
@@ -82,7 +82,7 @@ const ButtonStyled = styled.button`
   background: #ff7c03;
   color: white;
   border-radius: 2px;
-  font-family: 'abril-Fatface';
+  font-family: 'Lexend';
   width: fit-content;
   font-size: 18px;
   padding: 10px;

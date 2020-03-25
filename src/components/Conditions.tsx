@@ -5,6 +5,7 @@ import * as TS from '../types';
 import InputWrapper from './InputWrapper';
 import ConditionsDropdown from './ConditionsDropdown';
 import Selected from './ConditionsSelected';
+import T from './Typography';
 
 interface Props {
   conditions: TS.Condition[];
@@ -38,7 +39,7 @@ export default function ConditionsInput({ conditions, setConditions }: Props) {
   }
 
   return (
-    <InputWrapper title="Pre-existing conditions">
+    <InputWrapper title="Pre-existing Conditions:">
       <Container>
         <Input
           value={value}
@@ -64,15 +65,18 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
+  width: 100%;
 `;
 
 const Input = styled.input`
+  border: 1px solid #ff7c03;
+
   padding: 0 10px;
   margin-bottom: 20px;
   font-size: 16px;
   line-height: 1;
   height: 45px;
   max-width: 250px;
-  width: 100%;
+  min-width: 100%;
   border-radius: 0;
 `;

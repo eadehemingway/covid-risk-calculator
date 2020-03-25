@@ -17,14 +17,12 @@ export default function Age({ age, setAge }: Props) {
   }
 
   return (
-    <InputWrapper title="Age">
-      <T.P3>How old are you?</T.P3>
+    <InputWrapper title="Age:">
       <Input type="text" value={age} onChange={handleChange} />
     </InputWrapper>
   );
 }
 const Input = styled.input`
-  background: none;
   border: 1px solid #ff7c03;
   padding: 10px;
   font-family: 'abril-Fatface';
