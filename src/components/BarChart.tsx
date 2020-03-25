@@ -37,25 +37,32 @@ export default function BarChart({ id }: Props) {
       .paddingInner(0.01);
 
     const svg = d3.select('svg');
-    const y_axis = d3.axisLeft(y_scale);
+    const y_axis = d3.axisLeft(y_scale).tickSize(0);
     svg
       .append('g')
       .attr('class', 'axis')
       .attr('transform', `translate(${xOffset}, ${yOffset})`)
       .call(y_axis);
 
+    d3.select('.axis path')
+      .attr('stroke-width', 3)
+      .attr('stroke', 'brown');
+
     const rects = svg
       .selectAll(`rect`)
       .data(data)
       .enter()
       .append('rect')
-      .attr('width', d => d.num)
+      .attr('width', 0)
       .attr('height', 5)
       .attr('fill', 'orange')
-      .attr('x', (d, i) => {
-        return xOffset;
-      })
+      .attr('x', xOffset)
       .attr('y', d => y_scale(d.id) + yOffset);
+
+    rects
+      .transition()
+      .duration(500)
+      .attr('width', d => d.num);
   }, [data]);
 
   return <div></div>;

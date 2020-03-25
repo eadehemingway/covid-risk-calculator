@@ -20,7 +20,7 @@ export default function Visualisation({
     setPage(page + 1);
   }
   function movePageLeft() {
-    setPage(page - 11);
+    setPage(page - 1);
   }
 
   function getVisualisation() {
@@ -70,12 +70,12 @@ export default function Visualisation({
       );
     }
     if (page === 2) {
-      return <div> page two</div>;
+      return <div></div>;
     }
     if (page === 3) {
       return (
         <>
-          <div> page three</div>
+          <div> </div>
         </>
       );
     }

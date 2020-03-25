@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import * as d3 from 'd3';
 
 interface Props {
@@ -21,41 +20,54 @@ export default function ColumnChart({ id }: Props) {
   }, []);
 
   useEffect(() => {
-    const yOffset = 50;
+    const bottomOfGraph = 400;
     const xOffset = 150;
     const stringArr = data.map(d => d.id);
 
-    const x_scale = d3
+    const y_scale = d3
       .scaleLinear()
-      .domain([500, 0])
+      .domain([bottomOfGraph, 0])
       .rangeRound([0, 600]);
 
-    const y_scale = d3
+    const x_scale = d3
       .scaleBand()
       .domain(stringArr)
-      .range([400, 0])
+      .range([500, 0])
       .paddingInner(0.01);
 
     const svg = d3.select('svg');
-    const y_axis = d3.axisLeft(y_scale);
+    const x_axis = d3
+      .axisBottom(x_scale)
+      .tickSize(0)
+      .tickValues([]);
+
     svg
       .append('g')
       .attr('class', 'axis')
-      .attr('transform', `translate(${xOffset}, ${yOffset})`)
-      .call(y_axis);
+      .attr('transform', `translate(${xOffset}, ${bottomOfGraph})`)
+      .call(x_axis);
 
+    d3.select('.axis path')
+      .attr('stroke-width', 5)
+      .attr('stroke', 'brown');
     const rects = svg
       .selectAll(`rect`)
       .data(data)
       .enter()
       .append('rect')
-      .attr('width', d => d.num)
-      .attr('height', 5)
+      .attr('width', 5)
+      .attr('height', 0)
       .attr('fill', 'orange')
       .attr('x', (d, i) => {
-        return xOffset;
+        return x_scale(d.id) + xOffset;
       })
-      .attr('y', d => y_scale(d.id) + yOffset);
+      .attr('y', d => bottomOfGraph);
+
+    rects
+      .transition()
+      .duration(500)
+      .attr('height', d => d.num)
+      .attr('y', d => bottomOfGraph - d.num);
   }, [data]);
 
   return <div></div>;
