@@ -17,7 +17,7 @@ export default function Visualisation({
     setPage(page + 1);
   }
   function movePageLeft() {
-    setPage(page - 11);
+    setPage(page - 1);
   }
 
   function getVisualisation() {
