@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { T } from './Typography';
-import SliderPanel from './SliderPanel';
 
 interface Props {
   baseRate: number;
@@ -28,10 +27,6 @@ export default function TextInVisualisation({
         <Percentage>{baseRate * relativeRisk}%</Percentage>
         <Percentage>{baseRate * relativeRisk}%</Percentage>
       </StatSummaries>
-      <SliderPanel
-        relativeRisk={relativeRisk}
-        setRelativeRisk={setRelativeRisk}
-      />
     </Container>
   );
 }
@@ -52,6 +47,7 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 `;
 
 const ForceTitles = styled.div`
@@ -60,4 +56,5 @@ const ForceTitles = styled.div`
 
 const StatSummaries = styled.div`
   display: flex;
+  margin-bottom: 50px;
 `;

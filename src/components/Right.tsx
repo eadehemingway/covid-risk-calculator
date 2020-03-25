@@ -8,9 +8,8 @@ interface Props {
   baseRate: number;
 }
 
-export default function Visualisations({ baseRate }) {
+export default function Right({ baseRate }: Props) {
   const [relativeRisk, setRelativeRisk] = useState(2);
-
   return (
     <Container>
       <TextInVisualisation
@@ -20,6 +19,10 @@ export default function Visualisations({ baseRate }) {
       />
       <ForceDirectedVis baseRate={baseRate} relativeRisk={relativeRisk} />
       <StyledSvg />
+      <SliderPanel
+        relativeRisk={relativeRisk}
+        setRelativeRisk={setRelativeRisk}
+      />
     </Container>
   );
 }
@@ -27,6 +30,9 @@ export default function Visualisations({ baseRate }) {
 const Container = styled.div`
   display: flex;
   flex: 2.5;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 const StyledSvg = styled.svg`
   position: absolute;
