@@ -13,17 +13,9 @@ export default function ForceDirected({ deathRate, position, title }: Props) {
 
   useEffect(() => {
     const data = d3.range(100).map((n, i) => {
-      if (Number.isInteger(deathRate)) {
-        const isDeathCircle = n <= deathRate;
-        const fillColor = isDeathCircle ? '#C4C4C4' : 'none';
-        return { id: i, fillColor };
-      } else {
-        // i.e. death rate is a decimal
-        if (n >= Math.ceil(deathRate)) return { id: i, fillColor: 'none' };
-        if (n < Math.floor(deathRate)) return { id: i, fillColor: '		#B0B0B0' };
-
-        return { id: i, fillColor: '#E0E0E0' };
-      }
+      if (n >= Math.ceil(deathRate)) return { id: i, fillColor: 'none' };
+      if (n < Math.floor(deathRate)) return { id: i, fillColor: '#B0B0B0' };
+      return { id: i, fillColor: '#E0E0E0' };
     });
     setData(data);
   }, [deathRate]);
