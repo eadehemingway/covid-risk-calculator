@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { T } from '../typography';
+import { T } from './Typography';
 import AgeInput from './AgeInput';
 import SexInput from './SexInput';
 import ConditionsInput from './ConditionsInput';
