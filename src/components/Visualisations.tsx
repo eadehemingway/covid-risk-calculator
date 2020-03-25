@@ -8,5 +8,4 @@ export default function Drawer() {
 const Container = styled.div`
   display: flex;
   flex: 2;
-  background-color: #efefef;
 `;

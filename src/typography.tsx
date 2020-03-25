@@ -1,14 +1,14 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 interface IProps {
   mods?: Array<string | number>;
   mobileMods?: Array<string | number>;
 }
 
-export const P = styled.p`
+const P = styled.p`
   font-size: 1.8em;
   line-height: 1.6;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   ${props => props.mods && modifiers(props.mods)}
   @media only screen and (max-width: 768px) {
@@ -16,10 +16,10 @@ export const P = styled.p`
   }
 `;
 
-export const P1 = styled.p`
+const P1 = styled.p`
   font-size: 1.6em;
   line-height: 1.6;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   ${props => props.mods && modifiers(props.mods)}
   @media only screen and (max-width: 768px) {
@@ -27,10 +27,10 @@ export const P1 = styled.p`
   }
 `;
 
-export const P2 = styled.p`
+const P2 = styled.p`
   font-size: 1.4em;
   line-height: 1.4;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   @media only screen and (max-width: 768px) {
     font-size: 1.2em;
@@ -41,10 +41,10 @@ export const P2 = styled.p`
   }
 `;
 
-export const P3 = styled.p`
+const P3 = styled.p`
   font-size: 1.2em;
   line-height: 1.4;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   ${props => props.mods && modifiers(props.mods)}
   @media only screen and (max-width: 768px) {
@@ -52,9 +52,9 @@ export const P3 = styled.p`
   }
 `;
 
-export const H1 = styled.h1`
+const H1 = styled.h1`
   font-size: 4.5em;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   line-height: 1.25;
   font-weight: 500;
@@ -67,9 +67,9 @@ export const H1 = styled.h1`
   }
 `;
 
-export const H2 = styled.h2`
+const H2 = styled.h2`
   font-size: 3.5em;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   line-height: 1.25;
   font-weight: 500;
@@ -82,9 +82,9 @@ export const H2 = styled.h2`
   }
 `;
 
-export const H3 = styled.h3`
+const H3 = styled.h3`
   font-size: 3.2em;
-  font-family: "abril-Fatface";
+  font-family: 'abril-Fatface';
   color: #6a4019;
   line-height: 1.25;
   font-weight: 500;
@@ -102,27 +102,27 @@ function modifiers(arr: any) {
 
   arr.forEach((mod: string | number) => {
     // adjust font size with any number
-    if (typeof mod === "number") {
+    if (typeof mod === 'number') {
       str += `font-size: ${mod / 10}em;`;
       return;
     }
 
-    if (mod === "center") {
-      str += "text-align: center;";
+    if (mod === 'center') {
+      str += 'text-align: center;';
       return;
     }
 
-    if (mod === "left") {
-      str += "text-align: left;";
+    if (mod === 'left') {
+      str += 'text-align: left;';
       return;
     }
 
-    if (mod === "right") {
-      str += "text-align: right;";
+    if (mod === 'right') {
+      str += 'text-align: right;';
       return;
     }
 
-    if (mod === "error") {
+    if (mod === 'error') {
       str += `
         color: #ea534f;
         font-size: 16px;
@@ -130,51 +130,51 @@ function modifiers(arr: any) {
       return;
     }
 
-    if (mod === "fade") {
+    if (mod === 'fade') {
       str += `
         opacity: 0.6;
       `;
       return;
     }
 
-    if (mod === "bold") {
-      str += "font-weight: bold;";
+    if (mod === 'bold') {
+      str += 'font-weight: bold;';
       return;
     }
 
-    if (mod === "regular") {
-      str += "font-weight: regular;";
+    if (mod === 'regular') {
+      str += 'font-weight: regular;';
       return;
     }
 
-    if (mod === "caps") {
-      str += "text-transform: uppercase;";
+    if (mod === 'caps') {
+      str += 'text-transform: uppercase;';
       return;
     }
 
-    if (mod === "spaced") {
-      str += "letter-spacing: 2px;";
+    if (mod === 'spaced') {
+      str += 'letter-spacing: 2px;';
       return;
     }
 
-    if (mod === "spaced1") {
-      str += "letter-spacing: 1px;";
+    if (mod === 'spaced1') {
+      str += 'letter-spacing: 1px;';
       return;
     }
 
-    if (mod === "spaced0") {
-      str += "letter-spacing: default;";
+    if (mod === 'spaced0') {
+      str += 'letter-spacing: default;';
       return;
     }
 
-    if (mod === "hover") {
+    if (mod === 'hover') {
       str += `&:hover {
         cursor: pointer;
       }`;
       return;
     }
 
-    if (mod === "link") {
+    if (mod === 'link') {
       str += `
         text-decoration: underline;
         font-weight: bold;
@@ -192,3 +192,13 @@ function modifiers(arr: any) {
     ${str}
   `;
 }
+
+export const T = {
+  P,
+  P1,
+  P2,
+  P3,
+  H1,
+  H2,
+  H3,
+};

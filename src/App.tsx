@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import './App.css';
-import UserInputsDrawer from './components/Drawer';
+import UserInputsPanel from './components/UserInputsPanel';
 import Visualisations from './components/Visualisations';
 
 export default function App() {
   return (
     <Container>
-      <UserInputsDrawer />
+      <UserInputsPanel />
       <Visualisations />
     </Container>
   );
