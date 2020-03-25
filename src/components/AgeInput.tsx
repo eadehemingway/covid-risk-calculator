@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import InputWrapper from './InputWrapper';
-import { T } from './Typography';
 
 interface Props {
   age: number;
@@ -25,6 +24,7 @@ export default function Age({ age, setAge }: Props) {
 const Input = styled.input`
   border: 1px solid #ff7c03;
   padding: 10px;
-  font-family: 'abril-Fatface';
+  font-family: 'Lexend';
   outline-color: #ff7c03;
+  font-size: 18px;
 `;

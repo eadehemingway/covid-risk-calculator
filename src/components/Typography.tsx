@@ -96,6 +96,20 @@ const H3 = styled.h3`
     ${(props: IProps) => props.mobileMods && modifiers(props.mobileMods)}
   }
 `;
+const H4 = styled.h4`
+  font-size: 1.2em;
+  font-family: 'abril-Fatface';
+  color: #6a4019;
+  line-height: 1.25;
+  font-weight: 500;
+  @media only screen and (max-width: 768px) {
+    font-size: 2.6em;
+  }
+  ${(props: IProps) => props.mods && modifiers(props.mods)}
+  @media only screen and (max-width: 768px) {
+    ${(props: IProps) => props.mobileMods && modifiers(props.mobileMods)}
+  }
+`;
 
 function modifiers(arr: any) {
   let str = ``;
@@ -201,6 +215,7 @@ export const T = {
   H1,
   H2,
   H3,
+  H4,
 };
 
 export default T;

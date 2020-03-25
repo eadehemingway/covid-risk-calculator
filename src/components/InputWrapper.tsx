@@ -21,7 +21,7 @@ const Container = styled.div`
   flex: 2;
   border-top: 1px solid #ff7c03;
   transition: height 0.5s;
-  padding: 10px;
+  padding: 20px 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -39,6 +39,6 @@ const ArrowStyled = styled.img`
     dropDownOpen ? 'transform: rotate(180deg)' : 'transform: rotate(0deg)'}
 `;
 
-export const UserTitle = styled(T.P3)`
+export const UserTitle = styled(T.H4)`
   margin-bottom: 20px;
 `;
