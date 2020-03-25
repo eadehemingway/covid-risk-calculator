@@ -2,20 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 
 import * as TS from '../types';
-import Option from './ConditionsSelectedOption';
+import Condition from './ConditionsSelectedOption';
 
 interface Props {
-  selectedOptions: TS.Option[];
-  unselectOption: (option: TS.Option) => void;
+  conditions: TS.Condition[];
+  unselectCondition: (condition: TS.Condition) => void;
 }
 
-export default function Selected({ selectedOptions, unselectOption }: Props) {
-  if (selectedOptions.length === 0) return <></>;
+export default function Selected({ conditions, unselectCondition }: Props) {
+  if (conditions.length === 0) return <></>;
 
   return (
     <Container>
-      {selectedOptions.map((option: TS.Option) => {
-        return <Option option={option} unselectOption={unselectOption} />;
+      {conditions.map((condition: TS.Condition) => {
+        return (
+          <Condition
+            condition={condition}
+            unselectCondition={unselectCondition}
+          />
+        );
       })}
     </Container>
   );

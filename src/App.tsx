@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <Container>
-      <UserInputsPanel />
+      <UserInputsPanel setBaseRate={setBaseRate} />
       <Visualisations baseRate={baseRate} />
     </Container>
   );

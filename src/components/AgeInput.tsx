@@ -3,15 +3,27 @@ import styled from 'styled-components';
 import InputWrapper from './InputWrapper';
 import { T } from './Typography';
 
-export default function AgeInput() {
+interface Props {
+  age: number;
+  setAge: (age: number) => void;
+}
+
+export default function Age({ age, setAge }: Props) {
+  function handleChange(e: React.FormEvent<EventTarget>) {
+    const target = e.target as HTMLInputElement;
+    const { value } = target;
+    const number = Number(value);
+    setAge(number);
+  }
+
   return (
     <InputWrapper title="Age">
-      <T.P3> How old are you?</T.P3>
-      <TextInputStyled type="text" />
+      <T.P3>How old are you?</T.P3>
+      <Input type="text" value={age} onChange={handleChange} />
     </InputWrapper>
   );
 }
-const TextInputStyled = styled.input`
+const Input = styled.input`
   background: none;
   border: 1px solid #ff7c03;
   padding: 10px;

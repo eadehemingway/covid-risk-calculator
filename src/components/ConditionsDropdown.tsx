@@ -1,40 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Option from './ConditionsDropdownOption';
+import Condition from './ConditionsDropdownOption';
 import * as TS from '../types';
 
 interface Props {
   inputValue: string;
-  selectedOptions: TS.Option[];
-  selectOption: (a: TS.Option) => void;
+  conditions: TS.Condition[];
+  selectCondition: (a: TS.Condition) => void;
   dropdownOpen: boolean;
 }
 
 export default function Drawer({
   inputValue,
-  selectedOptions,
-  selectOption,
+  conditions,
+  selectCondition,
   dropdownOpen,
 }: Props) {
-  const options = rawOptions.filter(option => {
-    const lowerCaseOption = option.name.toLowerCase();
+  const filteredConditions = rawConditions.filter(condition => {
+    const lowerCaseCondition = condition.name.toLowerCase();
     const lowerCaseInput = inputValue.toLowerCase();
-    const matchesInput = lowerCaseOption.indexOf(lowerCaseInput) > -1;
-    const selectedOptionsName = selectedOptions.map(o => o.name);
-    const notAlreadySelected = selectedOptionsName.indexOf(option.name) === -1;
+    const matchesInput = lowerCaseCondition.indexOf(lowerCaseInput) > -1;
+    const selectedConditionsName = conditions.map(o => o.name);
+    const notAlreadySelected =
+      selectedConditionsName.indexOf(condition.name) === -1;
     if (matchesInput && notAlreadySelected) return true;
     return false;
   });
 
-  if (options.length === 0) {
+  if (filteredConditions.length === 0) {
     return null;
   }
 
   return (
     <Container open={dropdownOpen}>
-      {options.map(option => {
-        return <Option option={option} selectOption={selectOption} />;
+      {filteredConditions.map(condition => {
+        return (
+          <Condition condition={condition} selectCondition={selectCondition} />
+        );
       })}
     </Container>
   );
@@ -65,7 +68,7 @@ const Container = styled.div`
   }};
 `;
 
-const rawOptions = [
+const rawConditions = [
   { name: 'severe COPD', mortalityRate: 3 },
   { name: 'asthma', mortalityRate: 3 },
   { name: 'Coronary Heart DIsease (CHD)', mortalityRate: 3 },
