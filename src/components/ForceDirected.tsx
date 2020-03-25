@@ -12,6 +12,7 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log(deathRate);
     const data = d3.range(100).map((n, i) => {
       if (n >= Math.ceil(deathRate)) return { id: i, fillColor: 'none' };
       if (n < Math.floor(deathRate)) return { id: i, fillColor: '#B0B0B0' };
@@ -55,9 +56,8 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
 
     const svg = d3.select(`#${id}`);
 
-    svg
-      .selectAll(`.circle-${position}`)
-      .data(data)
+    const circles = svg.selectAll(`.circle-${position}`).data(data);
+    circles
       .enter()
       .append('rect')
       .attr('width', radius * 2)
@@ -68,6 +68,8 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
       .attr('stroke', '#FE9839')
       .attr('stroke-width', 2)
       .attr('fill', d => d.fillColor);
+
+    circles.attr('fill', d => d.fillColor);
   }, [data, deathRate, id, position]);
 
   return null;
