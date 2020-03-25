@@ -1,14 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import TextInVisualisation from './TextInVisualisation';
 import ForceDirectedVis from './ForceDirectedViz';
 import SliderPanel from './SliderPanel';
 
-export default function Visualisations() {
+interface Props {
+  baseRate: number;
+}
+
+export default function Visualisations({ baseRate }) {
+  const [relativeRisk, setRelativeRisk] = useState(2);
+
   return (
     <Container>
-      <TextInVisualisation />
-      <ForceDirectedVis />
+      <TextInVisualisation
+        baseRate={baseRate}
+        relativeRisk={relativeRisk}
+        setRelativeRisk={setRelativeRisk}
+      />
+      <ForceDirectedVis baseRate={baseRate} relativeRisk={relativeRisk} />
       <StyledSvg />
     </Container>
   );

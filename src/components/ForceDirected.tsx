@@ -66,5 +66,5 @@ export default function ForceDirected({ deathRate, position }: Props) {
       .attr('fill', d => d.fillColor);
   }, [data, deathRate, position]);
 
-  return <div></div>;
+  return null;
 }

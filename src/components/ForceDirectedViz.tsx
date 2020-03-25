@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ForceDirected from './ForceDirected';
 
-export default function ForceDirectedVis() {
+interface Props {
+  baseRate: number;
+  relativeRisk: number;
+}
+
+export default function ForceDirectedVis({ baseRate, relativeRisk }: Props) {
   return (
     <Container>
-      <ForceDirected deathRate={0.1} position={0} />
-      <ForceDirected deathRate={2.2} position={1} />
-      <ForceDirected deathRate={25} position={2} />
+      <ForceDirected deathRate={baseRate} position={0} />
+      <ForceDirected deathRate={baseRate * relativeRisk} position={1} />
+      <ForceDirected deathRate={baseRate * relativeRisk} position={2} />
     </Container>
   );
 }

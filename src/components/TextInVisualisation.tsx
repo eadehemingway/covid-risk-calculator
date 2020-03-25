@@ -1,9 +1,19 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { T } from '../typography';
+import { T } from './Typography';
 import SliderPanel from './SliderPanel';
 
-export default function TextInVisualisation() {
+interface Props {
+  baseRate: number;
+  relativeRisk: number;
+  setRelativeRisk: (relativeRisk: number) => void;
+}
+
+export default function TextInVisualisation({
+  baseRate,
+  relativeRisk,
+  setRelativeRisk,
+}) {
   return (
     <Container>
       <ForceTitles>
@@ -14,11 +24,14 @@ export default function TextInVisualisation() {
         <ForceTitleStyled>if you get Covid 19:</ForceTitleStyled>
       </ForceTitles>
       <StatSummaries>
-        <Percentage>0.2%</Percentage>
-        <Percentage>0.2%</Percentage>
-        <Percentage>0.2%</Percentage>
+        <Percentage>{baseRate}%</Percentage>
+        <Percentage>{baseRate * relativeRisk}%</Percentage>
+        <Percentage>{baseRate * relativeRisk}%</Percentage>
       </StatSummaries>
-      <SliderPanel />
+      <SliderPanel
+        relativeRisk={relativeRisk}
+        setRelativeRisk={setRelativeRisk}
+      />
     </Container>
   );
 }
@@ -29,6 +42,7 @@ const ForceTitleStyled = styled(T.P3)`
   font-size: 12px;
   max-width: 200px;
 `;
+
 const Percentage = styled(T.H1)`
   padding-left: 90px;
 `;
@@ -39,9 +53,11 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
 const ForceTitles = styled.div`
   display: flex;
 `;
+
 const StatSummaries = styled.div`
   display: flex;
 `;
