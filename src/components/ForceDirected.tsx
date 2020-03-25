@@ -5,10 +5,9 @@ import * as d3 from 'd3';
 interface Props {
   deathRate: number;
   position: number;
-  title: string;
 }
 
-export default function ForceDirected({ deathRate, position, title }: Props) {
+export default function ForceDirected({ deathRate, position }: Props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -65,19 +64,7 @@ export default function ForceDirected({ deathRate, position, title }: Props) {
       .attr('stroke', '#FE9839')
       .attr('stroke-width', 2)
       .attr('fill', d => d.fillColor);
-
-    // svg
-    //   .append('text')
-    //   .text(title)
-    //   .attr('x', centerOfGravity.x)
-    //   .attr('y', centerOfGravity.y)
-    //   .attr('font-size', '70px')
-    //   .attr('font-weight', 'bold')
-    //   .attr('font-family', 'futura')
-    //   .attr('fill', 'snow')
-    //   .attr('text-anchor', 'middle')
-    //   .attr('dominant-baseline', 'middle');
-  }, [data, deathRate, position, title]);
+  }, [data, deathRate, position]);
 
   return <div></div>;
 }
