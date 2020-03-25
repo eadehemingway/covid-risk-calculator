@@ -10,17 +10,14 @@ interface Props {
 }
 
 export default function InputWrapper({ children, title }: Props) {
-  const [openDropDown, setOpenDropDown] = useState(false);
-  const height = openDropDown ? 300 : 60;
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+  const height = dropDownOpen ? 300 : 60;
 
   return (
-    <Container
-      onClick={() => setOpenDropDown(!openDropDown)}
-      style={{ height }}
-    >
-      <Header>
-        <T.P1>{title}</T.P1>
-        <ArrowStyled src={arrow} />
+    <Container style={{ height }}>
+      <Header onClick={() => setDropDownOpen(!dropDownOpen)}>
+        <Title>{title}</Title>
+        <ArrowStyled src={arrow} dropDownOpen={dropDownOpen} />
       </Header>
       {children}
     </Container>
@@ -28,20 +25,33 @@ export default function InputWrapper({ children, title }: Props) {
 }
 
 const Container = styled.div`
-  display: flex;
   flex: 2;
   border: 1px solid #ff7c03;
   transition: height 0.5s;
   padding: 10px;
-  justify-content: center;
-  flex-direction: column;
+  overflow: hidden;
 `;
+
+const Title = styled(T.P1)`
+  margin: 0;
+`;
+
+interface ArrowStyled {
+  dropDownOpen: boolean;
+}
 
 const ArrowStyled = styled.img`
   width: 20px;
+  transition: transform 1s;
+  ${({ dropDownOpen }: ArrowStyled) =>
+    dropDownOpen ? 'transform: rotate(180deg)' : 'transform: rotate(0deg)'}
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  margin-bottom: 50px;
 `;
