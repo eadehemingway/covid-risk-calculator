@@ -4,13 +4,13 @@ import { hot } from 'react-hot-loader/root';
 
 import './App.css';
 import UserInputsPanel from './components/UserInputsPanel';
-import Visualisations from './components/VisualisationPanel';
+import Right from './components/Right';
 
 const App = () => {
   return (
     <Container>
       <UserInputsPanel />
-      <Visualisations />
+      <Right />
     </Container>
   );
 };

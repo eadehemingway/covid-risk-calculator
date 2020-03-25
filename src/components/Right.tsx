@@ -4,12 +4,13 @@ import TextInVisualisation from './TextInVisualisation';
 import ForceDirectedVis from './ForceDirectedViz';
 import SliderPanel from './SliderPanel';
 
-export default function Visualisations() {
+export default function Right() {
   return (
     <Container>
       <TextInVisualisation />
       <ForceDirectedVis />
       <StyledSvg />
+      <SliderPanel />
     </Container>
   );
 }
@@ -17,6 +18,9 @@ export default function Visualisations() {
 const Container = styled.div`
   display: flex;
   flex: 2.5;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 const StyledSvg = styled.svg`
   position: absolute;

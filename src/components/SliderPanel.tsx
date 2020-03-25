@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 export default function SliderPanel() {
@@ -8,5 +8,5 @@ export default function SliderPanel() {
 const Container = styled.div`
   height: 300px;
   min-width: 100%;
-  border: 2px solid red;
+  border-top: 1px solid #ff7c03;
 `;

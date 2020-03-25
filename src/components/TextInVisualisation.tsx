@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { T } from '../typography';
-import SliderPanel from './SliderPanel';
+import { T } from './Typography';
 
 export default function TextInVisualisation() {
   return (
@@ -18,7 +17,6 @@ export default function TextInVisualisation() {
         <Percentage>0.2%</Percentage>
         <Percentage>0.2%</Percentage>
       </StatSummaries>
-      <SliderPanel />
     </Container>
   );
 }
@@ -38,10 +36,12 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 `;
 const ForceTitles = styled.div`
   display: flex;
 `;
 const StatSummaries = styled.div`
   display: flex;
+  margin-bottom: 50px;
 `;
