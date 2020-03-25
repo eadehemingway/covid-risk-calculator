@@ -56,11 +56,17 @@ export default function ColumnChart({ id }: Props) {
       .enter()
       .append('rect')
       .attr('width', 5)
-      .attr('height', d => d.num)
+      .attr('height', 0)
       .attr('fill', 'orange')
       .attr('x', (d, i) => {
         return x_scale(d.id) + xOffset;
       })
+      .attr('y', d => bottomOfGraph);
+
+    rects
+      .transition()
+      .duration(500)
+      .attr('height', d => d.num)
       .attr('y', d => bottomOfGraph - d.num);
   }, [data]);
 

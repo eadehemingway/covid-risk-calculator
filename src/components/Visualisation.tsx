@@ -75,12 +75,12 @@ export default function Visualisation({
       );
     }
     if (page === 2) {
-      return <div> page two</div>;
+      return <div></div>;
     }
     if (page === 3) {
       return (
         <>
-          <div> page three</div>
+          <div> </div>
         </>
       );
     }
