@@ -6,10 +6,14 @@ import InputWrapper from './InputWrapper';
 import ConditionsDropdown from './ConditionsDropdown';
 import Selected from './ConditionsSelected';
 
-export default function ConditionsInput() {
+interface Props {
+  conditions: TS.Condition[];
+  setConditions: (a: TS.Condition[]) => void;
+}
+
+export default function ConditionsInput({ conditions, setConditions }: Props) {
   const [value, setValue] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<TS.Option[]>([]);
 
   function handleOpenDropdown() {
     setDropdownOpen(!dropdownOpen);
@@ -21,16 +25,16 @@ export default function ConditionsInput() {
     setValue(value);
   }
 
-  function handleSelectOption(option: TS.Option) {
-    const newOptions = selectedOptions.concat(option);
-    setSelectedOptions(newOptions);
+  function handleSelectCondition(condition: TS.Condition) {
+    const newConditions = conditions.concat(condition);
+    setConditions(newConditions);
   }
 
-  function handleUnselectOption(option: TS.Option) {
-    const newOptions = selectedOptions.filter(selected => {
-      return selected.name !== option.name;
+  function handleUnselectCondition(condition: TS.Condition) {
+    const newConditions = conditions.filter(selected => {
+      return selected.name !== condition.name;
     });
-    setSelectedOptions(newOptions);
+    setConditions(newConditions);
   }
 
   return (
@@ -43,13 +47,13 @@ export default function ConditionsInput() {
         />
         <ConditionsDropdown
           inputValue={value}
-          selectedOptions={selectedOptions}
-          selectOption={handleSelectOption}
+          conditions={conditions}
+          selectCondition={handleSelectCondition}
           dropdownOpen={dropdownOpen}
         />
         <Selected
-          selectedOptions={selectedOptions}
-          unselectOption={handleUnselectOption}
+          conditions={conditions}
+          unselectCondition={handleUnselectCondition}
         />
       </Container>
     </InputWrapper>

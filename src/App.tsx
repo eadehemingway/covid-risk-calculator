@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { hot } from 'react-hot-loader/root';
 
@@ -7,10 +7,12 @@ import UserInputsPanel from './components/UserInputsPanel';
 import Right from './components/Right';
 
 const App = () => {
+  const [baseRate, setBaseRate] = useState(2);
+
   return (
     <Container>
-      <UserInputsPanel />
-      <Right />
+      <UserInputsPanel setBaseRate={setBaseRate} />
+      <Right baseRate={baseRate} />
     </Container>
   );
 };

@@ -1,11 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import * as TS from '../types';
 import { T } from './Typography';
 import Age from './AgeInput';
 import Sex from './SexInput';
 import Conditions from './Conditions';
 
-export default function UserInputsPanel() {
+interface Props {
+  setBaseRate: (baseRate: number) => void;
+}
+
+export default function UserInputsPanel({ setBaseRate }: Props) {
+  const [age, setAge] = useState<number>();
+  const [sex, setSex] = useState('');
+  const [conditions, setConditions] = useState<TS.Condition[]>([]);
+
+  function calculateBaseRate() {
+    const ageVariant = ageToMultiplier(age);
+    const sexVariant = sexToMultiplier(sex);
+    const conditionsVariant = conditionsToMultiplier(conditions);
+    const baseRate = calculateRate(ageVariant, sexVariant, conditionsVariant);
+    setBaseRate(baseRate);
+  }
+
+  function ageToMultiplier(age: number) {
+    return age > 70 ? 2 : 1;
+  }
+
+  function sexToMultiplier(sex: string) {
+    return sex === 'Female' ? 1 : 1.2;
+  }
+
+  function conditionsToMultiplier(conditions: TS.Condition[]) {
+    return conditions.reduce((acc, condition) => {
+      return (acc += condition.mortalityRate);
+    }, 1);
+  }
+
+  function calculateRate(age: number, sex: number, conditions: number) {
+    return age * sex * conditions;
+  }
+
   return (
     <Container>
       <Title>
@@ -13,14 +49,12 @@ export default function UserInputsPanel() {
         high is
         <br /> my risk?
       </Title>
-      <InputWrapper>
-        <Conditions />
-        <Age />
-        <Sex />
-      </InputWrapper>
-      <ButtonWrapper>
-        <ButtonStyled>Calculate</ButtonStyled>
-      </ButtonWrapper>
+      <Inputs>
+        <Conditions conditions={conditions} setConditions={setConditions} />
+        <Age age={age} setAge={setAge} />
+        <Sex sex={sex} setSex={setSex} />
+      </Inputs>
+      <ButtonStyled onClick={calculateBaseRate}>Calculate</ButtonStyled>
     </Container>
   );
 }
@@ -40,7 +74,7 @@ const Title = styled(T.H1)`
   margin-right: 0;
 `;
 
-const InputWrapper = styled.div`
+const Inputs = styled.div`
   border-bottom: 1px solid #ff7c03;
 `;
 
@@ -54,9 +88,5 @@ const ButtonStyled = styled.button`
   padding: 10px;
   border: none;
   margin: 20px;
-`;
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  align-self: flex-end;
 `;

@@ -4,8 +4,15 @@ import ForceDirected from './ForceDirected';
 import arrow from '../assets/images/down-arrow.svg';
 import TextInVisualisation from './TextInVisualisation';
 import BarChart from './BarChart';
+import ColumnChart from './ColumnChart';
 
-export default function Visualisation({ page, setPage }) {
+export default function Visualisation({
+  page,
+  setPage,
+  baseRate,
+  relativeRisk,
+  setRelativeRisk,
+}) {
   function movePageRight() {
     setPage(page + 1);
   }
@@ -17,9 +24,21 @@ export default function Visualisation({ page, setPage }) {
     if (page === 1) {
       return (
         <>
-          <ForceDirected id="force-directed" deathRate={0.1} position={0} />
-          <ForceDirected id="force-directed" deathRate={2.2} position={1} />
-          <ForceDirected id="force-directed" deathRate={25} position={2} />
+          <ForceDirected
+            id="force-directed"
+            deathRate={baseRate}
+            position={0}
+          />
+          <ForceDirected
+            id="force-directed"
+            deathRate={baseRate * relativeRisk}
+            position={1}
+          />
+          <ForceDirected
+            id="force-directed"
+            deathRate={baseRate * relativeRisk}
+            position={2}
+          />
           <RightArrowStyled src={arrow} onClick={movePageRight} />
           <StyledSvg id="force-directed" />
         </>
@@ -29,9 +48,9 @@ export default function Visualisation({ page, setPage }) {
       return (
         <>
           <LeftArrowStyled src={arrow} onClick={movePageLeft} />
-          <BarChart id="barChart" />
+          <ColumnChart id="column-chart" />
           <RightArrowStyled src={arrow} onClick={movePageRight} />
-          <StyledSvg id="barChart" />
+          <StyledSvg id="column-chart" />
         </>
       );
     }
@@ -39,15 +58,21 @@ export default function Visualisation({ page, setPage }) {
       return (
         <>
           <LeftArrowStyled src={arrow} onClick={movePageLeft} />
-          <div> page three</div>
-          <StyledSvg id="column-chart" />
+          <BarChart id="bar-chart" />
+          <StyledSvg id="bar-chart" />
         </>
       );
     }
   }
   function getVisualisationText() {
     if (page === 1) {
-      return <TextInVisualisation />;
+      return (
+        <TextInVisualisation
+          baseRate={baseRate}
+          relativeRisk={relativeRisk}
+          setRelativeRisk={setRelativeRisk}
+        />
+      );
     }
     if (page === 2) {
       return <div> page two</div>;

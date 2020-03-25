@@ -6,19 +6,22 @@ import { T } from './Typography';
 import cross from '../cross.svg';
 
 interface Props {
-  option: TS.Option;
-  unselectOption: (option: TS.Option) => void;
+  condition: TS.Condition;
+  unselectCondition: (condition: TS.Condition) => void;
 }
 
-export default function SelectedOption({ option, unselectOption }: Props) {
-  function handleUnselectOption() {
-    unselectOption(option);
+export default function SelectedCondition({
+  condition,
+  unselectCondition,
+}: Props) {
+  function handleUnselectCondition() {
+    unselectCondition(condition);
   }
 
   return (
-    <Container onClick={handleUnselectOption}>
+    <Container onClick={handleUnselectCondition}>
       <Image src={cross} />
-      <T.P3>{option.name}</T.P3>
+      <T.P3>{condition.name}</T.P3>
     </Container>
   );
 }

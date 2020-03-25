@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function SliderPanel() {
+interface Props {
+  relativeRisk: number;
+  setRelativeRisk: (relativeRisk: number) => void;
+}
+
+export default function SliderPanel({ relativeRisk, setRelativeRisk }: Props) {
   return <Container></Container>;
 }
 

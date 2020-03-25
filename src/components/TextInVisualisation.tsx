@@ -1,8 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { T } from './Typography';
 
-export default function TextInVisualisation() {
+interface Props {
+  baseRate: number;
+  relativeRisk: number;
+  setRelativeRisk: (relativeRisk: number) => void;
+}
+
+export default function TextInVisualisation({
+  baseRate,
+  relativeRisk,
+  setRelativeRisk,
+}) {
   return (
     <Container>
       <ForceTitles>
@@ -13,9 +23,9 @@ export default function TextInVisualisation() {
         <ForceTitleStyled>if you get Covid 19:</ForceTitleStyled>
       </ForceTitles>
       <StatSummaries>
-        <Percentage>0.2%</Percentage>
-        <Percentage>0.2%</Percentage>
-        <Percentage>0.2%</Percentage>
+        <Percentage>{baseRate}%</Percentage>
+        <Percentage>{baseRate * relativeRisk}%</Percentage>
+        <Percentage>{baseRate * relativeRisk}%</Percentage>
       </StatSummaries>
     </Container>
   );
@@ -27,6 +37,7 @@ const ForceTitleStyled = styled(T.P3)`
   font-size: 12px;
   max-width: 200px;
 `;
+
 const Percentage = styled(T.H1)`
   padding-left: 90px;
 `;
@@ -38,9 +49,11 @@ const Container = styled.div`
   justify-content: space-between;
   height: 100%;
 `;
+
 const ForceTitles = styled.div`
   display: flex;
 `;
+
 const StatSummaries = styled.div`
   display: flex;
   margin-bottom: 50px;

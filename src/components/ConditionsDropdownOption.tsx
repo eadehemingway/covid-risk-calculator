@@ -5,21 +5,21 @@ import T from './Typography';
 import * as TS from '../types';
 
 interface Props {
-  option: TS.Option;
-  selectOption: (a: TS.Option) => void;
+  condition: TS.Condition;
+  selectCondition: (a: TS.Condition) => void;
 }
 
-export default function ConditionsDropdownOptions({
-  option,
-  selectOption,
+export default function ConditionsDropdownConditions({
+  condition,
+  selectCondition,
 }: Props) {
-  function handleSelectOption() {
-    selectOption(option);
+  function handleSelectCondition() {
+    selectCondition(condition);
   }
 
   return (
-    <Container onClick={handleSelectOption}>
-      <T.P3>{option.name}</T.P3>
+    <Container onClick={handleSelectCondition}>
+      <T.P3>{condition.name}</T.P3>
     </Container>
   );
 }

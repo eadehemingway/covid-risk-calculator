@@ -4,13 +4,22 @@ import TextInVisualisation from './TextInVisualisation';
 import Visualisation from './Visualisation';
 import SliderPanel from './SliderPanel';
 
-export default function Right() {
+export default function Right({ baseRate }) {
+  const [relativeRisk, setRelativeRisk] = useState(2);
   const [page, setPage] = useState(1);
   return (
     <Container>
-      {/* <TextInVisualisation /> */}
-      <Visualisation page={page} setPage={setPage} />
-      <SliderPanel />
+      <Visualisation
+        baseRate={baseRate}
+        relativeRisk={relativeRisk}
+        page={page}
+        setPage={setPage}
+        setRelativeRisk={setRelativeRisk}
+      />
+      <SliderPanel
+        relativeRisk={relativeRisk}
+        setRelativeRisk={setRelativeRisk}
+      />
     </Container>
   );
 }
