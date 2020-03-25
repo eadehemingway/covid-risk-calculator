@@ -27,6 +27,7 @@ export default function UserInputsPanel() {
 
 const Container = styled.div`
   height: 100%;
+  overflow: scroll;
   border-right: 1px solid #ff7c03;
   display: flex;
   flex: 1;
