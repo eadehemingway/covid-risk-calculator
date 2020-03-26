@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { colors } from '../colors';
 
 interface IProps {
   mods?: Array<string | number>;
@@ -9,9 +10,11 @@ const P = styled.p`
   font-size: 1.8em;
   line-height: 1.6;
   font-family: 'Lexend';
-  color: #6a4019;
-  ${props => props.mods && modifiers(props.mods)}
-  @media only screen and (max-width: 768px) {
+  color: ${colors.brown};
+  ${props =>
+    props.mods &&
+    modifiers(props.mods)} @media
+    only screen and (max-width: 768px) {
     ${(props: IProps) => props.mobileMods && modifiers(props.mobileMods)}
   }
 `;
@@ -20,9 +23,11 @@ const P1 = styled.p`
   font-size: 1.6em;
   line-height: 1.6;
   font-family: 'Lexend';
-  color: #6a4019;
-  ${props => props.mods && modifiers(props.mods)}
-  @media only screen and (max-width: 768px) {
+  color: ${colors.brown};
+  ${props =>
+    props.mods &&
+    modifiers(props.mods)} @media
+    only screen and (max-width: 768px) {
     ${(props: IProps) => props.mobileMods && modifiers(props.mobileMods)}
   }
 `;
@@ -31,7 +36,7 @@ const P2 = styled.p`
   font-size: 1.4em;
   line-height: 1.4;
   font-family: 'Lexend';
-  color: #6a4019;
+  color: ${colors.brown};
   @media only screen and (max-width: 768px) {
     font-size: 1.2em;
   }
@@ -45,9 +50,11 @@ const P3 = styled.p`
   font-size: 1.2em;
   line-height: 1.4;
   font-family: 'Lexend';
-  color: #6a4019;
-  ${props => props.mods && modifiers(props.mods)}
-  @media only screen and (max-width: 768px) {
+  color: ${colors.brown};
+  ${props =>
+    props.mods &&
+    modifiers(props.mods)} @media
+    only screen and (max-width: 768px) {
     ${(props: IProps) => props.mobileMods && modifiers(props.mobileMods)}
   }
 `;
@@ -55,7 +62,7 @@ const P3 = styled.p`
 const H1 = styled.h1`
   font-size: 3.5em;
   font-family: 'abril-Fatface';
-  color: #6a4019;
+  color: ${colors.brown};
   line-height: 1.25;
   font-weight: 500;
   @media only screen and (max-width: 768px) {
@@ -70,7 +77,7 @@ const H1 = styled.h1`
 const H2 = styled.h2`
   font-size: 3em;
   font-family: 'abril-Fatface';
-  color: #6a4019;
+  color: ${colors.brown};
   line-height: 1.25;
   font-weight: 500;
   @media only screen and (max-width: 768px) {
@@ -85,7 +92,7 @@ const H2 = styled.h2`
 const H3 = styled.h3`
   font-size: 2em;
   font-family: 'abril-Fatface';
-  color: #6a4019;
+  color: ${colors.brown};
   line-height: 1.25;
   font-weight: 500;
   @media only screen and (max-width: 768px) {
@@ -99,7 +106,7 @@ const H3 = styled.h3`
 const H4 = styled.h4`
   font-size: 1.2em;
   font-family: 'abril-Fatface';
-  color: #6a4019;
+  color: ${colors.brown};
   line-height: 1.25;
   font-weight: 500;
   @media only screen and (max-width: 768px) {

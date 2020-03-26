@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as d3 from 'd3';
+import { colors } from '../colors';
 
 interface Props {
   deathRate: number;
@@ -14,8 +15,8 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
     console.log(deathRate);
     const data = d3.range(100).map((n, i) => {
       if (n >= Math.ceil(deathRate)) return { id: i, fillColor: 'none' };
-      if (n < Math.floor(deathRate)) return { id: i, fillColor: '#B0B0B0' };
-      return { id: i, fillColor: '#E0E0E0' };
+      if (n < Math.floor(deathRate)) return { id: i, fillColor: colors.brown };
+      return { id: i, fillColor: colors.grey };
     });
     setData(data);
   }, [deathRate]);
@@ -64,7 +65,7 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
       .attr('rx', 100)
       .attr('ry', 100)
       .attr('class', `circle-${position}`)
-      .attr('stroke', '#FE9839')
+      .attr('stroke', colors.orange)
       .attr('stroke-width', 2)
       .attr('fill', d => d.fillColor);
 

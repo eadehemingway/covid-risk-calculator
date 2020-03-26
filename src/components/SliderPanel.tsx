@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from './Slider';
 import T from './Typography';
+import { colors } from '../colors';
 
 interface Props {
   relativeRisk: number;
@@ -26,7 +27,7 @@ export default function SliderPanel({ relativeRisk, setRelativeRisk }: Props) {
 const Container = styled.div`
   min-height: 200px;
   min-width: 100%;
-  border-top: 1px solid #ff7c03;
+  border-top: 1px solid ${colors.orange};
   display: flex;
   justify-content: space-between;
 `;

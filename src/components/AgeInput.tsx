@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import InputWrapper from './InputWrapper';
+import { colors } from '../colors';
 
 interface Props {
   age: number;
@@ -22,9 +23,9 @@ export default function Age({ age, setAge }: Props) {
   );
 }
 const Input = styled.input`
-  border: 1px solid #ff7c03;
+  border: 1px solid ${colors.orange};
   padding: 10px;
   font-family: 'Lexend';
-  outline-color: #ff7c03;
+  outline-color: ${colors.orange};
   font-size: 18px;
 `;

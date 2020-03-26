@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import InputWrapper from './InputWrapper';
 import { T } from './Typography';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
+import { colors } from '../colors';
 
 interface Props {
   sex: string;
@@ -16,12 +17,12 @@ export default function SexInput({ sex, setSex }: Props) {
     <InputWrapper title="Assigned sex at birth:">
       <RadioGroup onChange={(e: any) => setSex(e)} horizontal>
         {sexArr.map(s => {
-          const textColor = sex === s ? '#ff7c03' : '#6a4019';
+          const textColor = sex === s ? colors.orange : colors.brown;
           return (
             <RadioButton
               value={s}
-              rootColor="#6a4019"
-              pointColor="#ff7c03"
+              rootColor={colors.brown}
+              pointColor={colors.orange}
               iconSize={20}
               iconInnerSize={10}
             >

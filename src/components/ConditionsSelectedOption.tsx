@@ -31,7 +31,7 @@ const Container = styled.div`
   border-radius: 3px;
   display: flex;
   align-items: center;
-  border: 1px solid #ff7c03;
+  border: 1px solid colors.orange;
   margin: 2px;
   cursor: pointer;
 `;
