@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { T } from './Typography';
 
@@ -8,10 +8,14 @@ interface Props {
 }
 
 export default function ForceDescription({ description, percentage }) {
+  const [opacity, setOpacity] = useState(0);
+  useEffect(() => {
+    setTimeout(() => setOpacity(1), 100);
+  }, []);
   return (
     <div>
-      <Percentage>{percentage}%</Percentage>
-      <ForceTitleStyled>{description}</ForceTitleStyled>
+      <Percentage style={{ opacity }}>{percentage}%</Percentage>
+      <ForceTitleStyled style={{ opacity }}>{description}</ForceTitleStyled>
     </div>
   );
 }
@@ -21,9 +25,11 @@ const ForceTitleStyled = styled(T.P2)`
   text-align: left;
   font-size: 12px;
   max-width: 200px;
+  transition: opacity 0.5s;
 `;
 
 const Percentage = styled(T.H1)`
   width: 200px;
   text-align: right;
+  transition: opacity 0.5s;
 `;

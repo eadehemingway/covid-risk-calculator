@@ -83,6 +83,7 @@ export default function PageOne({
   return (
     <VisContainer>
       <TextInVisualisation
+        page={page}
         base={baseRate}
         noCovid={mortalityRiskNoCovid}
         withCovid={mortalityRiskWithCovid}
