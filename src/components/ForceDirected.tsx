@@ -10,6 +10,7 @@ interface Props {
 }
 
 export default function ForceDirected({ deathRate, position, id, x }: Props) {
+  console.log('position:', position);
   const [data, setData] = useState([]);
 
   // useEffect(() => {

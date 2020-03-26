@@ -46,7 +46,9 @@ export default function UserInputsPanel({ setBaseRate, setPage }: Props) {
   }
 
   function handleCalculate() {
-    d3.selectAll(`circle`).remove();
+    d3.select('#force-directed')
+      .selectAll(`circle`)
+      .remove();
     calculateBaseRate();
     setPage(1);
   }
