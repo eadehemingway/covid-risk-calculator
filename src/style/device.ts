@@ -1,5 +1,5 @@
-export const device = {
-  mobile: `(min-width: 375px)`,
-  tablet: `(min-width: 768px)`,
-  desktop: `(min-width: 1024p)x`,
+export default {
+  mobile: `(max-width: 375px)`,
+  tablet: `(max-width: 768px)`,
+  desktop: `(max-width: 1024p)x`,
 };

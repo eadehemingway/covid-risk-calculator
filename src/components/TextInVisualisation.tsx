@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { T } from './Typography';
+import T from './Typography';
 import ForceDescription from './ForceDescription';
 
 interface Props {

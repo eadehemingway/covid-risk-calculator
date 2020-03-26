@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Condition from './ConditionsDropdownOption';
 import * as TS from '../types';
-import { colors } from '../style/colors';
+import colors from '../style/colors';
 
 interface Props {
   inputValue: string;

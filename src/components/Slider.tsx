@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import * as d3 from 'd3';
-import { colors } from '../style/colors';
+import colors from '../style/colors';
 
 export default function Slider({ id }) {
   useEffect(() => {

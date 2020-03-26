@@ -5,7 +5,7 @@ const backgroundGrey = '#f5f5f5';
 const palePink = '#FFD9BE';
 const darkGrey = 'grey';
 
-export const colors = {
+export default {
   darkGrey,
   orange,
   brown,

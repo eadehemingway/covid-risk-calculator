@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from './Slider';
 import T from './Typography';
-import { colors } from '../style/colors';
+import colors from '../style/colors';
 import arrow from '../assets/images/down-arrow.svg';
 
 interface Props {
