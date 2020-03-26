@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import * as d3 from 'd3';
 import * as TS from '../types';
 import { T } from './Typography';
 import Age from './AgeInput';
@@ -46,6 +46,7 @@ export default function UserInputsPanel({ setBaseRate, setPage }: Props) {
   }
 
   function handleCalculate() {
+    d3.selectAll(`circle`).remove();
     calculateBaseRate();
     setPage(1);
   }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ForceDirected from './ForceDirected';
 import arrow from '../assets/images/down-arrow.svg';
 import TextInVisualisation from './TextInVisualisation';
-
+import * as d3 from 'd3';
 import SliderPanel from './SliderPanel';
 
 export default function PageOne({
@@ -19,6 +19,7 @@ export default function PageOne({
     setComingFromLeft(true);
     setPage(page + 1);
   }
+
   function getVisualisation() {
     switch (page) {
       case 1:

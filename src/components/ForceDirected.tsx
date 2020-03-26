@@ -12,6 +12,10 @@ interface Props {
 export default function ForceDirected({ deathRate, position, id, x }: Props) {
   const [data, setData] = useState([]);
 
+  // useEffect(() => {
+  //   return () => d3.selectAll(`.circle-${position}`).remove();
+  // }, [position]);
+
   useEffect(() => {
     const data = d3.range(100).map((n, i) => {
       let fillColor = colors.paleGrey;
@@ -47,8 +51,8 @@ export default function ForceDirected({ deathRate, position, id, x }: Props) {
       .on('tick', () => {
         // call the tick function running the simulation
         d3.selectAll(`.circle-${position}`)
-          .attr('cy', (d: { y: number }) => d.y)
-          .attr('cx', (d: { x: number }) => d.x);
+          .attr('cy', (d: dataWithCoordinates) => d.y)
+          .attr('cx', (d: dataWithCoordinates) => d.x);
       });
 
     const svg = d3.select(`#${id}`);
@@ -61,6 +65,7 @@ export default function ForceDirected({ deathRate, position, id, x }: Props) {
       .attr('class', `circle-${position}`)
       .attr('stroke', colors.orange)
       .attr('stroke-width', 2)
+      .attr('opacity', 1)
       .attr('fill', d => d.fillColor);
 
     circles.attr('fill', d => d.fillColor);
