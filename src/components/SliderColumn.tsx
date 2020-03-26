@@ -66,7 +66,6 @@ const SliderSvg = styled.svg`
   position: absolute;
   left: -20px;
   bottom: 0;
-  border: 2px solid red;
   margin-bottom: 40px;
 `;
 

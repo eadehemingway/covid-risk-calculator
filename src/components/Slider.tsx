@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import * as d3 from 'd3';
 import colors from '../style/colors';
 
@@ -8,17 +7,18 @@ export default function Slider({ id, setVal, columnWidth }) {
     const yVal = 40;
     const padding = 20;
     const maxVal = 20;
+    const minVal = 10;
 
     const xScale = d3
       .scaleLinear()
-      .domain([10, maxVal])
-      .range([0, columnWidth])
+      .domain([minVal, maxVal])
+      .range([padding, columnWidth + padding])
       .clamp(true);
     const svg = d3.select(`#${id}`);
     svg
       .append('line')
-      .attr('x1', 0 + padding)
-      .attr('x2', xScale(maxVal) + padding)
+      .attr('x1', padding)
+      .attr('x2', xScale(maxVal))
       .attr('y1', yVal)
       .attr('y2', yVal)
       .attr('stroke', colors.brown)
@@ -26,13 +26,9 @@ export default function Slider({ id, setVal, columnWidth }) {
 
     const drag = d3.drag().on('drag', d => {
       const handle = d3.selectAll(`#${id} circle`);
-      if (
-        d3.event.x > xScale(0) + padding &&
-        d3.event.x < xScale(maxVal) + padding
-      ) {
+      if (d3.event.x > xScale(minVal) && d3.event.x < xScale(maxVal)) {
         const xVal = d3.event.x;
         const sliderVal = xScale.invert(xVal);
-
         setVal(sliderVal);
         handle.attr('cx', d3.event.x);
       }
