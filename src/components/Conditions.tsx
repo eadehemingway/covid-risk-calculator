@@ -6,7 +6,7 @@ import InputWrapper from './InputWrapper';
 import ConditionsDropdown from './ConditionsDropdown';
 import Selected from './ConditionsSelected';
 import T from './Typography';
-import { colors } from '../style/colors';
+import colors from '../style/colors';
 
 interface Props {
   conditions: TS.Condition[];
@@ -25,7 +25,6 @@ export default function ConditionsInput({ conditions, setConditions }: Props) {
   });
 
   function handleClick(e) {
-    // if (e.target.id === 'input-dropdown') return;
     setTimeout(() => {
       if (dropdownOpen) {
         setDropdownOpen(false);
@@ -44,16 +43,12 @@ export default function ConditionsInput({ conditions, setConditions }: Props) {
   }
 
   function handleSelectCondition(condition: TS.Condition) {
-    const newConditions = conditions.concat(condition);
-    setConditions(newConditions);
+    setConditions([condition]);
     setDropdownOpen(false);
   }
 
-  function handleUnselectCondition(condition: TS.Condition) {
-    const newConditions = conditions.filter(selected => {
-      return selected.name !== condition.name;
-    });
-    setConditions(newConditions);
+  function handleUnselectCondition() {
+    setConditions([]);
   }
 
   return (
