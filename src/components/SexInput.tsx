@@ -35,6 +35,6 @@ export default function SexInput({ sex, setSex }: Props) {
   );
 }
 
-const P3Styled = styled(T.P3)`
+const P3Styled = styled(T.P2)`
   margin: 0;
 `;

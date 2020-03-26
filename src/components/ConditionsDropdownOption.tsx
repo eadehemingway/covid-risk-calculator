@@ -19,7 +19,7 @@ export default function ConditionsDropdownConditions({
 
   return (
     <Container onClick={handleSelectCondition}>
-      <T.P3>{condition.name}</T.P3>
+      <T.P2>{condition.name}</T.P2>
     </Container>
   );
 }

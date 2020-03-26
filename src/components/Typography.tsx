@@ -20,7 +20,7 @@ const P = styled.p`
 `;
 
 const P1 = styled.p`
-  font-size: 1.6em;
+  font-size: 1.4em;
   line-height: 1.6;
   font-family: 'Lexend';
   color: ${colors.brown};
@@ -33,7 +33,7 @@ const P1 = styled.p`
 `;
 
 const P2 = styled.p`
-  font-size: 1.4em;
+  font-size: 1em;
   line-height: 1.4;
   font-family: 'Lexend';
   color: ${colors.brown};
@@ -47,7 +47,7 @@ const P2 = styled.p`
 `;
 
 const P3 = styled.p`
-  font-size: 1.2em;
+  font-size: 0.6em;
   line-height: 1.4;
   font-family: 'Lexend';
   color: ${colors.brown};

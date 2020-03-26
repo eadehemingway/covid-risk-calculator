@@ -21,7 +21,7 @@ export default function SelectedCondition({
   return (
     <Container onClick={handleUnselectCondition}>
       <Image src={cross} />
-      <T.P3>{condition.name}</T.P3>
+      <T.P2>{condition.name}</T.P2>
     </Container>
   );
 }

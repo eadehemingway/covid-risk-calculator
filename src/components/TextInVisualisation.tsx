@@ -27,7 +27,7 @@ export default function TextInVisualisation({ base, noCovid, withCovid }) {
   );
 }
 
-const ForceTitleStyled = styled(T.P3)`
+const ForceTitleStyled = styled(T.P2)`
   padding-top: 120px;
   padding-left: 90px;
   font-size: 12px;
