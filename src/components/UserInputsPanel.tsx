@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import * as d3 from 'd3';
 import * as TS from '../types';
 import T from './Typography';
 import colors from '../style/colors';
@@ -59,9 +59,13 @@ export default function UserInputsPanel({ setBaseRate, setPage }: Props) {
   function handleCalculate(e) {
     e.stopPropagation();
     setMobileOpen(false);
+    d3.select('#force-directed')
+      .selectAll(`circle`)
+      .remove();
     calculateBaseRate();
     setPage(1);
   }
+
   const haveValues = sex && age;
   return (
     <MobileDrawer open={mobileOpen} onClick={openOnMobile}>

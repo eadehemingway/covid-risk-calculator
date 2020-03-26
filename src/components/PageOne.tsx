@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ForceDirected from './ForceDirected';
 import arrow from '../assets/images/down-arrow.svg';
 import TextInVisualisation from './TextInVisualisation';
-
+import * as d3 from 'd3';
 import SliderPanel from './SliderPanel';
 
 export default function PageOne({
@@ -15,10 +15,24 @@ export default function PageOne({
 }) {
   const [sliderPanelOpen, setSliderPanelOpen] = useState(false);
   const [comingFromLeft, setComingFromLeft] = useState(false);
+
+  const [covidMortalityRate, setCovidMortalityRate] = useState(0.2);
   function movePageRight() {
     setComingFromLeft(true);
     setPage(page + 1);
   }
+
+  const mortalityRiskNoCovid = baseRate * relativeRisk;
+  const mortalityRiskWithCovid = mortalityRiskNoCovid * covidMortalityRate;
+  function getXCenterGrav(position) {
+    const windowWidth = window.innerWidth;
+    const widthOfRightSide = (windowWidth / 100) * 70;
+    const widthOfSpaceForForce = widthOfRightSide / 3;
+
+    const midPointOfWidth = widthOfSpaceForForce / 2;
+    return widthOfSpaceForForce * position + midPointOfWidth;
+  }
+
   function getVisualisation() {
     switch (page) {
       case 1:
@@ -27,58 +41,55 @@ export default function PageOne({
             id="force-directed"
             deathRate={baseRate}
             position={0}
-            x={150}
+            x={getXCenterGrav(0)}
           />
         );
       case 2:
         return (
-          <ForceDirected
-            id="force-directed"
-            deathRate={mortalityRiskNoCovid}
-            position={1}
-            x={700}
-          />
+          <>
+            <ForceDirected
+              id="force-directed"
+              deathRate={baseRate}
+              position={0}
+              x={getXCenterGrav(0)}
+            />
+            <ForceDirected
+              id="force-directed"
+              deathRate={mortalityRiskNoCovid}
+              position={1}
+              x={getXCenterGrav(1)}
+            />
+          </>
         );
       case 3:
-        if (comingFromLeft) {
-          return (
+        return (
+          <>
+            <ForceDirected
+              id="force-directed"
+              deathRate={baseRate}
+              position={0}
+              x={getXCenterGrav(0)}
+            />
+            <ForceDirected
+              id="force-directed"
+              deathRate={mortalityRiskNoCovid}
+              position={1}
+              x={getXCenterGrav(1)}
+            />
+
             <ForceDirected
               id="force-directed"
               deathRate={mortalityRiskWithCovid}
               position={2}
-              x={300}
+              x={getXCenterGrav(2)}
             />
-          );
-        } else {
-          return (
-            <>
-              <ForceDirected
-                id="force-directed"
-                deathRate={baseRate}
-                position={0}
-                x={150}
-              />
-              <ForceDirected
-                id="force-directed"
-                deathRate={mortalityRiskNoCovid}
-                position={1}
-                x={700}
-              />
-              <ForceDirected
-                id="force-directed"
-                deathRate={mortalityRiskWithCovid}
-                position={2}
-                x={300}
-              />
-            </>
-          );
-        }
+          </>
+        );
+
       default:
         return null;
     }
   }
-  const mortalityRiskNoCovid = baseRate * relativeRisk;
-  const mortalityRiskWithCovid = mortalityRiskNoCovid * 1.2;
 
   return (
     <VisContainer>
@@ -95,6 +106,8 @@ export default function PageOne({
       <SliderPanel
         sliderPanelOpen={sliderPanelOpen}
         setSliderPanelOpen={setSliderPanelOpen}
+        setNHSAffectedRate={setRelativeRisk}
+        setCovidMortalityRate={setCovidMortalityRate}
       />
     </VisContainer>
   );

@@ -12,9 +12,11 @@ export default function ForceDescription({ description, percentage }) {
   useEffect(() => {
     setTimeout(() => setOpacity(1), 100);
   }, []);
+  const formattedPercentage = percentage.toFixed(2);
+
   return (
     <div>
-      <Percentage style={{ opacity }}>{percentage}%</Percentage>
+      <Percentage style={{ opacity }}>{formattedPercentage}%</Percentage>
       <ForceTitleStyled style={{ opacity }}>{description}</ForceTitleStyled>
     </div>
   );

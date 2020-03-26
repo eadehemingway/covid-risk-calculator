@@ -3,20 +3,22 @@ import styled from 'styled-components';
 import * as d3 from 'd3';
 import colors from '../style/colors';
 
-export default function Slider({ id }) {
+export default function Slider({ id, setVal }) {
   useEffect(() => {
     const yVal = 40;
-    const sliderWidth = 180;
+    const padding = 20;
+    const maxVal = 20;
+    const svgWidth = 200;
     const xScale = d3
       .scaleLinear()
-      .domain([0, 100])
-      .range([0, sliderWidth])
+      .domain([10, maxVal])
+      .range([padding, svgWidth - padding])
       .clamp(true);
     const svg = d3.select(`#${id}`);
     svg
       .append('line')
-      .attr('x1', 0)
-      .attr('x2', sliderWidth)
+      .attr('x1', 0 + padding)
+      .attr('x2', xScale(maxVal))
       .attr('y1', yVal)
       .attr('y2', yVal)
       .attr('stroke', colors.orange)
@@ -24,7 +26,11 @@ export default function Slider({ id }) {
 
     const drag = d3.drag().on('drag', d => {
       const handle = d3.selectAll(`#${id} circle`);
-      if (d3.event.x > 0 && d3.event.x < sliderWidth) {
+      if (d3.event.x > xScale(0) && d3.event.x < xScale(maxVal)) {
+        const xVal = d3.event.x;
+        const sliderVal = xScale.invert(xVal);
+
+        setVal(sliderVal);
         handle.attr('cx', d3.event.x);
       }
     });
@@ -39,7 +45,7 @@ export default function Slider({ id }) {
       .attr('stroke-width', 2)
       .attr('cursor', 'pointer')
       .call(s => drag(s));
-  }, [id]);
+  }, [id, setVal]);
 
   return null;
 }

@@ -8,11 +8,15 @@ import arrow from '../assets/images/down-arrow.svg';
 interface Props {
   sliderPanelOpen: boolean;
   setSliderPanelOpen: any;
+  setNHSAffectedRate: any;
+  setCovidMortalityRate: any;
 }
 
 export default function SliderPanel({
   sliderPanelOpen,
   setSliderPanelOpen,
+  setNHSAffectedRate,
+  setCovidMortalityRate,
 }: Props) {
   const height = sliderPanelOpen ? 200 : 50;
   return (
@@ -29,7 +33,7 @@ export default function SliderPanel({
             impact of the seasonal flu)
           </T.P3>
         </div>
-        <Slider id="slider-one" />
+        <Slider id="slider-one" setVal={setNHSAffectedRate} />
         <SliderSvg id={`slider-one`} />;
       </Column>
       <Column>
@@ -37,7 +41,7 @@ export default function SliderPanel({
           <T.H4>Extra mortality if I get infected with Covid</T.H4>
           <T.P3>This is the.... it is estimted to be between .....</T.P3>
         </div>
-        <Slider id="slider-two" />
+        <Slider id="slider-two" setVal={setCovidMortalityRate} />
         <SliderSvg id={`slider-two`} />;
       </Column>
       <Arrow

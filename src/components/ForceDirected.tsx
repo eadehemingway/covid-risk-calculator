@@ -12,6 +12,10 @@ interface Props {
 export default function ForceDirected({ deathRate, position, id, x }: Props) {
   const [data, setData] = useState([]);
 
+  // useEffect(() => {
+  //   return () => d3.selectAll(`.circle-${position}`).remove();
+  // }, [position]);
+
   useEffect(() => {
     const data = d3.range(100).map((n, i) => {
       let fillColor = colors.paleGrey;
@@ -24,15 +28,6 @@ export default function ForceDirected({ deathRate, position, id, x }: Props) {
   }, [deathRate, position]);
 
   useEffect(() => {
-    // const windowWidth = window.innerWidth;
-    // const widthOfRightSide = (windowWidth / 100) * 70;
-    // const widthOfSpaceForForce = widthOfRightSide / 3;
-    // console.log('widthOfSpaceForForce:', widthOfSpaceForForce);
-    // const midPointOfWidth = widthOfSpaceForForce / 2;
-    // const x = widthOfSpaceForForce * position + midPointOfWidth;
-    // console.log('x:', x);
-    // console.log('position:', position);
-
     const radius = 6;
 
     const collision = d3.forceCollide(radius * 2).strength(0.8);
@@ -40,15 +35,15 @@ export default function ForceDirected({ deathRate, position, id, x }: Props) {
       x: number;
       y: number;
     }
-    const centers = [200, 500, 800];
+
     d3.forceSimulation(data)
       .force('collision', collision)
-      .force('center', d3.forceCenter(centers[position], 700 / 2))
+      .force('center', d3.forceCenter(x, 700 / 2))
       .on('tick', () => {
         // call the tick function running the simulation
         d3.selectAll(`.circle-${position}`)
-          .attr('cy', (d: { y: number }) => d.y)
-          .attr('cx', (d: { x: number }) => d.x);
+          .attr('cy', (d: dataWithCoordinates) => d.y)
+          .attr('cx', (d: dataWithCoordinates) => d.x);
       });
 
     const svg = d3.select(`#${id}`);
@@ -61,6 +56,7 @@ export default function ForceDirected({ deathRate, position, id, x }: Props) {
       .attr('class', `circle-${position}`)
       .attr('stroke', colors.orange)
       .attr('stroke-width', 2)
+      .attr('opacity', 1)
       .attr('fill', d => d.fillColor);
 
     circles.attr('fill', d => d.fillColor);
