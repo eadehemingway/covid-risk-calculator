@@ -31,7 +31,7 @@ export default function Right({ baseRate }) {
 
 const Container = styled.div`
   display: flex;
-  flex: 2.5;
+  width: 70%;
   position: relative;
   flex-direction: column;
   justify-content: space-between;

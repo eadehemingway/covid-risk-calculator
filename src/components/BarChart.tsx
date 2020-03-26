@@ -53,7 +53,6 @@ export default function BarChart({ id }: Props) {
     d3.selectAll('.axis text')
       .attr('font-family', 'abril-Fatface')
       .attr('fill', colors.brown);
-
     const rects = svg
       .selectAll(`rect`)
       .data(data)
@@ -75,14 +74,14 @@ export default function BarChart({ id }: Props) {
       .on('mouseover', function(d) {
         d3.select(this).attr('fill', 'grey');
         tooltipGroup.style('visibility', 'visible');
-        tooltipCountryText.text(d.fillColor);
+        tooltipCountryText.text(`${d.id} : ${d.num}`);
       })
       .on('mousemove', d => {
         tooltipGroup.attr(
           'transform',
           `translate(${d3.event.offsetX + tooltipPadding},${d3.event.offsetY})`
         );
-        tooltipCountryText.text(d.fillColor);
+        tooltipCountryText.text(`${d.id} : ${d.num}`);
       })
       .on('mouseout', function(d) {
         d3.select(this).attr('fill', () => d.fillColor);
@@ -95,8 +94,8 @@ export default function BarChart({ id }: Props) {
       .style('visibility', 'hidden');
     const tooltipRect = tooltipGroup
       .append('rect')
-      .attr('width', 200)
-      .attr('height', 60)
+      .attr('width', 140)
+      .attr('height', 30)
       .attr('fill', 'white')
       .attr('stroke', colors.orange);
     const tooltipCountryText = tooltipGroup
@@ -106,8 +105,39 @@ export default function BarChart({ id }: Props) {
       .style('fill', colors.brown)
       .style('z-index', '100')
       .style('font-size', '10px')
-      .attr('dx', '5')
-      .attr('dy', '13');
+      .attr('dx', '15')
+      .attr('dy', '15');
+    const legendData = [
+      { color: colors.paleGrey, label: 'condition' },
+      { color: colors.palePink, label: 'gov 30 list' },
+      { color: colors.orange, label: 'your mortality risk' },
+    ];
+
+    const legend = svg
+      .append('g')
+      .attr('transform', (d, i) => 'translate(500, 400)')
+      .attr('class', '.legend');
+
+    const legendItem = legend
+      .selectAll('g')
+      .data(legendData)
+      .enter()
+      .append('g')
+      .attr('transform', (d, i) => `translate(0, ${i * 20})`);
+
+    legendItem
+      .append('text')
+      .text(d => d.label)
+      .style('font-family', 'Lexend')
+      .style('font-size', 14)
+      .attr('fill', colors.brown)
+      .attr('transform', (d, i) => `translate(20, 9)`);
+
+    legendItem
+      .append('rect')
+      .attr('width', 10)
+      .attr('height', 10)
+      .attr('fill', d => d.color);
   }, [data]);
 
   return null;

@@ -23,7 +23,12 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
   }, [deathRate]);
 
   useEffect(() => {
-    const x = 260 * position + 200;
+    const windowWidth = window.innerWidth;
+    const widthOfRightSide = (windowWidth / 100) * 70;
+    const widthOfSpaceForForce = widthOfRightSide / 3;
+    const midPointOfWidth = widthOfSpaceForForce / 2;
+    const x = widthOfSpaceForForce * position + midPointOfWidth;
+
     const centerOfGravity = { x, y: 300 };
     const forceX = d3
       .forceX()

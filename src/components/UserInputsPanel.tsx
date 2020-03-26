@@ -66,7 +66,7 @@ const Container = styled.div`
   overflow: scroll;
   border-right: 1px solid ${colors.orange};
   display: flex;
-  flex: 1;
+  width: 30%;
   flex-direction: column;
   justify-content: space-between;
 `;

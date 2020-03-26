@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { T } from './Typography';
+import { colors } from '../colors';
 
 interface Props {
   children: any;
@@ -19,7 +20,7 @@ export default function InputWrapper({ children, title }: Props) {
 
 const Container = styled.div`
   flex: 2;
-  border-top: 1px solid colors.orange;
+  border-top: 1px solid ${colors.orange};
   transition: height 0.5s;
   padding: 20px 10px;
   display: flex;
