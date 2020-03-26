@@ -27,11 +27,7 @@ export default function PageOne({
       />
 
       <ForceDirected id="force-directed" deathRate={baseRate} position={0} />
-      <ForceDirected
-        id="force-directed"
-        deathRate={baseRate * relativeRisk}
-        position={1}
-      />
+      <ForceDirected id="force-directed" deathRate={3.4} position={1} />
       <ForceDirected
         id="force-directed"
         deathRate={baseRate * relativeRisk}

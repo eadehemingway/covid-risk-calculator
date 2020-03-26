@@ -19,7 +19,7 @@ export default function InputWrapper({ children, title }: Props) {
 
 const Container = styled.div`
   flex: 2;
-  border-top: 1px solid #ff7c03;
+  border-top: 1px solid colors.orange;
   transition: height 0.5s;
   padding: 20px 10px;
   display: flex;

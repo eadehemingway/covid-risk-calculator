@@ -6,6 +6,7 @@ import { T } from './Typography';
 import Age from './AgeInput';
 import Sex from './SexInput';
 import Conditions from './Conditions';
+import { colors } from '../colors';
 
 interface Props {
   setBaseRate: (baseRate: number) => void;
@@ -63,7 +64,7 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
 const Container = styled.div`
   height: 100%;
   overflow: scroll;
-  border-right: 1px solid #ff7c03;
+  border-right: 1px solid ${colors.orange};
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -76,11 +77,11 @@ const Title = styled(T.H1)`
 `;
 
 const Inputs = styled.div`
-  border-bottom: 1px solid #ff7c03;
+  border-bottom: 1px solid ${colors.orange};
 `;
 
 const ButtonStyled = styled.button`
-  background: #ff7c03;
+  background: ${colors.orange};
   color: white;
   border-radius: 2px;
   font-family: 'Lexend';

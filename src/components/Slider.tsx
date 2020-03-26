@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import * as d3 from 'd3';
+import { colors } from '../colors';
 
 export default function Slider({ id }) {
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function Slider({ id }) {
       .attr('x2', sliderWidth)
       .attr('y1', yVal)
       .attr('y2', yVal)
-      .attr('stroke', '#FE9839')
+      .attr('stroke', colors.orange)
       .attr('stroke-width', 4);
 
     const drag = d3.drag().on('drag', d => {
@@ -34,7 +35,7 @@ export default function Slider({ id }) {
       .attr('cy', yVal)
       .attr('cx', 100)
       .attr('fill', 'white')
-      .attr('stroke', '#FE9839')
+      .attr('stroke', colors.orange)
       .attr('stroke-width', 2)
       .attr('cursor', 'pointer')
       .call(s => drag(s));

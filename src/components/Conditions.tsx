@@ -86,8 +86,8 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  border: 1px solid #ff7c03;
-  outline-color: #ff7c03;
+  border: 1px solid colors.orange;
+  outline-color: colors.orange;
   padding: 0 10px;
   margin-bottom: 20px;
   font-size: 16px;

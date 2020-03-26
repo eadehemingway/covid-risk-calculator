@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import * as d3 from 'd3';
+import { colors } from '../colors';
 
 interface Props {
   id: string;
@@ -12,7 +12,7 @@ export default function BarChart({ id }: Props) {
   useEffect(() => {
     const data = d3.range(30).map((n, i) => {
       const someNum = i + Math.random() * 10;
-      const color = someNum / 1.2 > i ? '#C4C4C4' : '#FFD9BE';
+      const color = someNum / 1.2 > i ? colors.paleGrey : colors.palePink;
       return {
         id: `condition-${i}`,
         num: n * n,
@@ -48,9 +48,11 @@ export default function BarChart({ id }: Props) {
     const axisThickness = 3;
     d3.select('.axis path')
       .attr('stroke-width', axisThickness)
-      .attr('stroke', '#6A4019');
+      .attr('stroke', colors.brown);
 
-    d3.selectAll('.axis text').attr('font-family', 'abril-Fatface');
+    d3.selectAll('.axis text')
+      .attr('font-family', 'abril-Fatface')
+      .attr('fill', colors.brown);
 
     const rects = svg
       .selectAll(`rect`)
