@@ -75,7 +75,7 @@ const SliderSvg = styled.svg`
 `;
 const Title = styled(T.H3)`
   margin-left: 30px;
-  margin-top: 60px;
+  margin-top: 50px;
 `;
 
 interface Arrow {
@@ -88,5 +88,5 @@ const Arrow = styled.img`
   cursor: pointer;
   top: 10px;
   transform: ${({ sliderPanelOpen }: Arrow) =>
-    sliderPanelOpen ? 'rotate(180deg)' : null};
+    sliderPanelOpen ? null : 'rotate(180deg)'};
 `;
