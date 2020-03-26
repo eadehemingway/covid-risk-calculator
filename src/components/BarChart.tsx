@@ -24,13 +24,13 @@ export default function BarChart({ id }: Props) {
 
   useEffect(() => {
     const yOffset = 150;
-    const xOffset = 150;
+    const xOffset = 180;
     const stringArr = data.map(d => d.id);
 
     const x_scale = d3
       .scaleLinear()
-      .domain([500, 0])
-      .rangeRound([400, 0]);
+      .domain([841, 0])
+      .rangeRound([500, 0]);
 
     const y_scale = d3
       .scaleBand()
@@ -69,6 +69,45 @@ export default function BarChart({ id }: Props) {
       .transition()
       .duration(500)
       .attr('width', d => x_scale(d.num));
+
+    const tooltipPadding = 10;
+    rects
+      .on('mouseover', function(d) {
+        d3.select(this).attr('fill', 'grey');
+        tooltipGroup.style('visibility', 'visible');
+        tooltipCountryText.text(d.fillColor);
+      })
+      .on('mousemove', d => {
+        tooltipGroup.attr(
+          'transform',
+          `translate(${d3.event.offsetX + tooltipPadding},${d3.event.offsetY})`
+        );
+        tooltipCountryText.text(d.fillColor);
+      })
+      .on('mouseout', function(d) {
+        d3.select(this).attr('fill', () => d.fillColor);
+        tooltipGroup.style('visibility', 'hidden');
+      });
+
+    const tooltipGroup = svg
+      .append('g')
+      .attr('class', 'tooltip')
+      .style('visibility', 'hidden');
+    const tooltipRect = tooltipGroup
+      .append('rect')
+      .attr('width', 200)
+      .attr('height', 60)
+      .attr('fill', 'white')
+      .attr('stroke', colors.orange);
+    const tooltipCountryText = tooltipGroup
+      .append('text')
+      .attr('class', 'tooltip')
+      .style('font-family', 'Lexend')
+      .style('fill', colors.brown)
+      .style('z-index', '100')
+      .style('font-size', '10px')
+      .attr('dx', '5')
+      .attr('dy', '13');
   }, [data]);
 
   return null;

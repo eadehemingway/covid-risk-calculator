@@ -22,7 +22,7 @@ const VisContainer = styled.div`
   width: 100%;
 `;
 const StyledSvg = styled.svg`
-  width: 700px;
+  width: 800px;
   height: 600px;
 `;
 
