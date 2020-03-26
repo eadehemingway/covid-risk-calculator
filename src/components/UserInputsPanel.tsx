@@ -60,7 +60,10 @@ export default function UserInputsPanel({ setBaseRate, setPage }: Props) {
     e.stopPropagation();
     setMobileOpen(false);
     d3.select('#force-directed')
-      .selectAll(`circle`)
+      .selectAll(`.circle-1`)
+      .remove();
+    d3.select('#force-directed')
+      .selectAll(`.circle-2`)
       .remove();
     calculateBaseRate();
     setPage(1);
