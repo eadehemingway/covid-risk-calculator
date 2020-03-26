@@ -15,7 +15,7 @@ interface Props {
 export default function UserInputsPanel({ setBaseRate }: Props) {
   const [age, setAge] = useState<number>();
   const [sex, setSex] = useState('');
-  console.log('sex:', sex);
+
   const [conditions, setConditions] = useState<TS.Condition[]>([]);
 
   function calculateBaseRate() {

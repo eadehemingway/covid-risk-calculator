@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Condition from './ConditionsDropdownOption';
 import * as TS from '../types';
+import { colors } from '../colors';
 
 interface Props {
   inputValue: string;
@@ -53,15 +54,17 @@ const Container = styled.div`
   background-color: white;
   position: absolute;
   max-height: 0;
+  border: 1px solid ${colors.orange};
+
   overflow: scroll;
   z-index: 2;
-  top: 50px;
+  top: 44px;
   max-width: 250px;
   min-width: 100%;
   ${({ open }: Container) => {
     if (open) {
       return `
-        max-height: 300px;
+        max-height: 160px;
       `;
     }
   }};

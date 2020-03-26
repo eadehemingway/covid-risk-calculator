@@ -84,6 +84,7 @@ const Container = styled.div`
   flex-direction: column;
   position: relative;
   width: 100%;
+  height: 180px;
 `;
 
 const Input = styled.input`
