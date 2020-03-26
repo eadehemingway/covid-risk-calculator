@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import arrow from '../assets/images/down-arrow.svg';
+import arrow from '../images/down-arrow.svg';
 import ColumnChart from './ColumnChart';
 import T from './Typography';
 

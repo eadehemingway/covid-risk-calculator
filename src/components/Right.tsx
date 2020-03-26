@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import device from '../style/device';
 import PageOne from './PageOne';
 import PageTwo from './PageTwo';
 import PageThree from './PageThree';
@@ -32,8 +34,11 @@ export default function Right({ baseRate, page, setPage }) {
 
 const Container = styled.div`
   display: flex;
-  width: 70%;
+  flex: 1;
   position: relative;
   flex-direction: column;
   justify-content: space-between;
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;

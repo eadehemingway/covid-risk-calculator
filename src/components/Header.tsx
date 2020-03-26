@@ -17,7 +17,7 @@ export default function Header({ closeOnMobile }: Props) {
         high is
         <br /> my risk?
       </Title>
-      <Image src={cross} onClick={closeOnMobile} />
+      <Cross src={cross} onClick={closeOnMobile} />
     </Container>
   );
 }
@@ -33,7 +33,7 @@ const Title = styled(T.H1)`
   margin-right: 0;
 `;
 
-const Image = styled.img`
+const Cross = styled.img`
   display: none;
   cursor: pointer;
   margin: 20px;

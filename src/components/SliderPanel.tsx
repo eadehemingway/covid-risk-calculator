@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import Slider from './Slider';
 import T from './Typography';
 import colors from '../style/colors';
-import arrow from '../assets/images/down-arrow.svg';
+import device from '../style/device';
+import arrow from '../images/down-arrow.svg';
 
 interface Props {
   sliderPanelOpen: boolean;
@@ -18,9 +20,8 @@ export default function SliderPanel({
   setNHSAffectedRate,
   setCovidMortalityRate,
 }: Props) {
-  const height = sliderPanelOpen ? 200 : 50;
   return (
-    <Container style={{ height }}>
+    <Container open={sliderPanelOpen}>
       <Title>
         Change The <br />
         Assumptions
@@ -53,8 +54,12 @@ export default function SliderPanel({
   );
 }
 
+interface Container {
+  open: boolean;
+}
+
 const Container = styled.div`
-  min-width: 100%;
+  width: 100%;
   border-top: 1px solid ${colors.orange};
   display: flex;
   justify-content: space-between;
@@ -62,7 +67,41 @@ const Container = styled.div`
   position: absolute;
   bottom: 0;
   overflow: hidden;
+  background: white;
+  ${({ open }: Container) => {
+    if (open) {
+      return `
+        height: 200px;
+      `;
+    } else {
+      return `
+        height: 0;
+      `;
+    }
+  }}
+
+  @media ${device.tablet} {
+    transition: height 0s, opacity 1s;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    z-index: 20;
+    opacity: 0;
+    ${({ open }: Container) => {
+      if (open) {
+        return `
+          opacity: 1;
+          height: 100%;
+        `;
+      } else {
+        return `
+          height: 0;
+        `;
+      }
+    }}
+  }
 `;
+
 const Column = styled.div`
   width: 30%;
   min-height: 100%;
@@ -77,6 +116,7 @@ const SliderSvg = styled.svg`
   width: 200px;
   height: 100px;
 `;
+
 const Title = styled(T.H3)`
   margin-left: 30px;
   margin-top: 50px;
@@ -85,6 +125,7 @@ const Title = styled(T.H3)`
 interface Arrow {
   sliderPanelOpen: boolean;
 }
+
 const Arrow = styled.img`
   position: absolute;
   right: 10px;

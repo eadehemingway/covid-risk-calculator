@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import arrow from '../images/down-arrow.svg';
+import gear from '../images/gear.svg';
 import ForceDirected from './ForceDirected';
-import arrow from '../assets/images/down-arrow.svg';
 import TextInVisualisation from './TextInVisualisation';
-import * as d3 from 'd3';
 import SliderPanel from './SliderPanel';
 
 export default function PageOne({
@@ -15,8 +16,12 @@ export default function PageOne({
 }) {
   const [sliderPanelOpen, setSliderPanelOpen] = useState(false);
   const [comingFromLeft, setComingFromLeft] = useState(false);
-
   const [covidMortalityRate, setCovidMortalityRate] = useState(0.2);
+
+  function toggleControls() {
+    setSliderPanelOpen(!sliderPanelOpen);
+  }
+
   function movePageRight() {
     setComingFromLeft(true);
     setPage(page + 1);
@@ -93,6 +98,7 @@ export default function PageOne({
 
   return (
     <VisContainer>
+      <Gear src={gear} onClick={toggleControls} />
       <TextInVisualisation
         page={page}
         base={baseRate}
@@ -100,7 +106,6 @@ export default function PageOne({
         withCovid={mortalityRiskWithCovid}
       />
       {getVisualisation()}
-
       <RightArrowStyled src={arrow} onClick={movePageRight} />
       <StyledSvg id="force-directed" />
       <SliderPanel
@@ -115,7 +120,14 @@ export default function PageOne({
 
 const VisContainer = styled.div`
   height: 100%;
+  width: 100%;
 `;
+
+const Gear = styled.img`
+  padding: 20px;
+  float: right;
+`;
+
 const StyledSvg = styled.svg`
   width: 950px;
   height: 600px;
