@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import * as TS from '../types';
 import { T } from './Typography';
 import cross from '../cross.svg';
-import { colors } from '../colors';
+import { colors } from '../style/colors';
 
 interface Props {
   condition: TS.Condition;

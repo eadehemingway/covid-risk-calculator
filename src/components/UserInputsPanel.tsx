@@ -6,7 +6,7 @@ import { T } from './Typography';
 import Age from './AgeInput';
 import Sex from './SexInput';
 import Conditions from './Conditions';
-import { colors } from '../colors';
+import { colors } from '../style/colors';
 
 interface Props {
   setBaseRate: (baseRate: number) => void;
@@ -77,6 +77,7 @@ const Container = styled.div`
   width: 30%;
   flex-direction: column;
   justify-content: space-between;
+  @
 `;
 
 const Title = styled(T.H1)`

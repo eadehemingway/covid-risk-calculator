@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import InputWrapper from './InputWrapper';
 import { T } from './Typography';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
-import { colors } from '../colors';
+import { colors } from '../style/colors';
 
 interface Props {
   sex: string;

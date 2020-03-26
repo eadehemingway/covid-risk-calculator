@@ -6,7 +6,7 @@ import InputWrapper from './InputWrapper';
 import ConditionsDropdown from './ConditionsDropdown';
 import Selected from './ConditionsSelected';
 import T from './Typography';
-import { colors } from '../colors';
+import { colors } from '../style/colors';
 
 interface Props {
   conditions: TS.Condition[];
