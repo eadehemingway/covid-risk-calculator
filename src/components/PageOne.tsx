@@ -24,6 +24,14 @@ export default function PageOne({
 
   const mortalityRiskNoCovid = baseRate * relativeRisk;
   const mortalityRiskWithCovid = mortalityRiskNoCovid * covidMortalityRate;
+  function getXCenterGrav(position) {
+    const windowWidth = window.innerWidth;
+    const widthOfRightSide = (windowWidth / 100) * 70;
+    const widthOfSpaceForForce = widthOfRightSide / 3;
+
+    const midPointOfWidth = widthOfSpaceForForce / 2;
+    return widthOfSpaceForForce * position + midPointOfWidth;
+  }
 
   function getVisualisation() {
     switch (page) {
@@ -33,7 +41,7 @@ export default function PageOne({
             id="force-directed"
             deathRate={baseRate}
             position={0}
-            x={150}
+            x={getXCenterGrav(0)}
           />
         );
       case 2:
@@ -43,13 +51,13 @@ export default function PageOne({
               id="force-directed"
               deathRate={baseRate}
               position={0}
-              x={150}
+              x={getXCenterGrav(0)}
             />
             <ForceDirected
               id="force-directed"
               deathRate={mortalityRiskNoCovid}
               position={1}
-              x={700}
+              x={getXCenterGrav(1)}
             />
           </>
         );
@@ -60,20 +68,20 @@ export default function PageOne({
               id="force-directed"
               deathRate={baseRate}
               position={0}
-              x={150}
+              x={getXCenterGrav(0)}
             />
             <ForceDirected
               id="force-directed"
               deathRate={mortalityRiskNoCovid}
               position={1}
-              x={700}
+              x={getXCenterGrav(1)}
             />
 
             <ForceDirected
               id="force-directed"
               deathRate={mortalityRiskWithCovid}
               position={2}
-              x={300}
+              x={getXCenterGrav(2)}
             />
           </>
         );
