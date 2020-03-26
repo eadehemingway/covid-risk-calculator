@@ -29,13 +29,15 @@ export default function TextInVisualisation({ base, noCovid, withCovid }) {
 
 const ForceTitleStyled = styled(T.P2)`
   padding-top: 120px;
-  padding-left: 90px;
+  width: 200px;
+  text-align: center;
   font-size: 12px;
   max-width: 200px;
 `;
 
 const Percentage = styled(T.H1)`
-  padding-left: 90px;
+  width: 200px;
+  text-align: center;
 `;
 
 const Container = styled.div`
@@ -48,9 +50,11 @@ const Container = styled.div`
 
 const ForceTitles = styled.div`
   display: flex;
+  justify-content: space-around;
 `;
 
 const StatSummaries = styled.div`
   display: flex;
+  justify-content: space-around;
   margin-bottom: 50px;
 `;

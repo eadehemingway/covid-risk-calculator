@@ -15,7 +15,6 @@ export default function PageOne({
 }) {
   function movePageRight() {
     setPage(page + 1);
-    console.log('page:', page);
   }
 
   return (
@@ -25,7 +24,6 @@ export default function PageOne({
         noCovid={relativeRisk}
         withCovid={relativeRisk}
       />
-
       <ForceDirected id="force-directed" deathRate={baseRate} position={0} />
       <ForceDirected id="force-directed" deathRate={3.4} position={1} />
       <ForceDirected
