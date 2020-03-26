@@ -14,7 +14,9 @@ export default function PageOne({
   setRelativeRisk,
 }) {
   const [sliderPanelOpen, setSliderPanelOpen] = useState(false);
+  const [comingFromLeft, setComingFromLeft] = useState(false);
   function movePageRight() {
+    setComingFromLeft(true);
     setPage(page + 1);
   }
   function getVisualisation() {
@@ -38,14 +40,39 @@ export default function PageOne({
           />
         );
       case 3:
-        return (
-          <ForceDirected
-            id="force-directed"
-            deathRate={mortalityRiskWithCovid}
-            position={2}
-            x={300}
-          />
-        );
+        if (comingFromLeft) {
+          return (
+            <ForceDirected
+              id="force-directed"
+              deathRate={mortalityRiskWithCovid}
+              position={2}
+              x={300}
+            />
+          );
+        } else {
+          return (
+            <>
+              <ForceDirected
+                id="force-directed"
+                deathRate={baseRate}
+                position={0}
+                x={150}
+              />
+              <ForceDirected
+                id="force-directed"
+                deathRate={mortalityRiskNoCovid}
+                position={1}
+                x={700}
+              />
+              <ForceDirected
+                id="force-directed"
+                deathRate={mortalityRiskWithCovid}
+                position={2}
+                x={300}
+              />
+            </>
+          );
+        }
       default:
         return null;
     }
