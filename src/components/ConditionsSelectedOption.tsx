@@ -2,25 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 import * as TS from '../types';
-import { T } from './Typography';
-import cross from '../cross.svg';
-import { colors } from '../colors';
+import T from './Typography';
+import cross from '../images/cross.svg';
+import colors from '../style/colors';
 
 interface Props {
   condition: TS.Condition;
-  unselectCondition: (condition: TS.Condition) => void;
+  unselectCondition: () => void;
 }
 
 export default function SelectedCondition({
   condition,
   unselectCondition,
 }: Props) {
-  function handleUnselectCondition() {
-    unselectCondition(condition);
-  }
-
   return (
-    <Container onClick={handleUnselectCondition}>
+    <Container onClick={unselectCondition}>
       <Image src={cross} />
       <T.P2>{condition.name}</T.P2>
     </Container>

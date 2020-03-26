@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../colors';
+import colors from '../style/colors';
 
 interface IProps {
   mods?: Array<string | number>;

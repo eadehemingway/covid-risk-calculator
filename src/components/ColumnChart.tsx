@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
-import { colors } from '../colors';
+import colors from '../style/colors';
 
 interface Props {
   id: string;

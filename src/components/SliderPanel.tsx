@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import T from './Typography';
-import { colors } from '../colors';
+import colors from '../style/colors';
 import arrow from '../assets/images/down-arrow.svg';
 import SliderColumn from './SliderColumn'
 

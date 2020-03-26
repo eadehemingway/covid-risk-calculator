@@ -6,7 +6,7 @@ import Condition from './ConditionsSelectedOption';
 
 interface Props {
   conditions: TS.Condition[];
-  unselectCondition: (condition: TS.Condition) => void;
+  unselectCondition: () => void;
 }
 
 export default function Selected({ conditions, unselectCondition }: Props) {

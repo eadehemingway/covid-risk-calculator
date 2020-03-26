@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { hot } from 'react-hot-loader/root';
 
-import './App.css';
 import UserInputsPanel from './components/UserInputsPanel';
 import Right from './components/Right';
 

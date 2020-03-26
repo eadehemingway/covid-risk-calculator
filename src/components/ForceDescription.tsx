@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { T } from './Typography';
+import T from './Typography';
 
 interface Props {
   description: string;

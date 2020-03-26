@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { T } from './Typography';
-import { colors } from '../colors';
+import T from './Typography';
+import colors from '../style/colors';
 
 interface Props {
   children: any;
