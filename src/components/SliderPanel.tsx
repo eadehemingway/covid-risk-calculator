@@ -76,7 +76,6 @@ const Column = styled.div`
 const SliderSvg = styled.svg`
   width: 200px;
   height: 100px;
-  border: 2px solid pink;
 `;
 const Title = styled(T.H3)`
   margin-left: 30px;
