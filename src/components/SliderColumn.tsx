@@ -23,19 +23,30 @@ export default function SliderColumn({
 }: Props) {
   const widthOfSliderPanel = (window.innerWidth / 100) * 70;
   const columnWidth = (widthOfSliderPanel / 100) * 30;
+  const sliderPadding = 20;
   return (
     <Column columnWidth={columnWidth}>
       <Writing>
         <SliderTitle>{title}</SliderTitle>
         <Subtitle>{subtitle}</Subtitle>
       </Writing>
-      <Slider id={id} setVal={handleChange} columnWidth={columnWidth} />
+      <Slider
+        id={id}
+        setVal={handleChange}
+        columnWidth={columnWidth}
+        sliderPadding={sliderPadding}
+      />
       <Wrapper>
         <LabelWrapper>
           <Label>{lowerLabel}</Label>
           <Label style={{ textAlign: 'right' }}>{upperLabel}</Label>
         </LabelWrapper>
-        <SliderSvg id={id} columnWidth={columnWidth} />;
+        <SliderSvg
+          id={id}
+          columnWidth={columnWidth}
+          sliderPadding={sliderPadding}
+        />
+        ;
       </Wrapper>
     </Column>
   );
@@ -59,9 +70,13 @@ const LabelWrapper = styled.div`
   position: absolute;
   bottom: 71px;
 `;
-
+interface SliderSvg {
+  columnWidth: number;
+  sliderPadding: number;
+}
 const SliderSvg = styled.svg`
-  width: ${({ columnWidth }: Column) => columnWidth + 40}px;
+  width: ${({ columnWidth, sliderPadding }: SliderSvg) =>
+    columnWidth + sliderPadding * 2}px;
   height: 60px;
   position: absolute;
   left: -20px;

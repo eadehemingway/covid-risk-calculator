@@ -2,22 +2,21 @@ import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import colors from '../style/colors';
 
-export default function Slider({ id, setVal, columnWidth }) {
+export default function Slider({ id, setVal, columnWidth, sliderPadding }) {
   useEffect(() => {
     const yVal = 40;
-    const padding = 20;
     const maxVal = 20;
     const minVal = 10;
 
     const xScale = d3
       .scaleLinear()
       .domain([minVal, maxVal])
-      .range([padding, columnWidth + padding])
+      .range([sliderPadding, columnWidth + sliderPadding])
       .clamp(true);
     const svg = d3.select(`#${id}`);
     svg
       .append('line')
-      .attr('x1', padding)
+      .attr('x1', sliderPadding)
       .attr('x2', xScale(maxVal))
       .attr('y1', yVal)
       .attr('y2', yVal)
@@ -44,7 +43,7 @@ export default function Slider({ id, setVal, columnWidth }) {
       .attr('stroke-width', 2)
       .attr('cursor', 'pointer')
       .call(s => drag(s));
-  }, [columnWidth, id, setVal]);
+  }, [columnWidth, id, setVal, sliderPadding]);
 
   return null;
 }
