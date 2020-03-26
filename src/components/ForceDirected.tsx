@@ -12,7 +12,6 @@ export default function ForceDirected({ deathRate, position, id }: Props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log(deathRate);
     const data = d3.range(100).map((n, i) => {
       if (n >= Math.ceil(deathRate)) return { id: i, fillColor: 'none' };
       if (n < Math.floor(deathRate))

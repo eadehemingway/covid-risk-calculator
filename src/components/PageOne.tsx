@@ -17,18 +17,25 @@ export default function PageOne({
     setPage(page + 1);
   }
 
+  const mortalityRiskNoCovid = baseRate * relativeRisk;
+  const mortalityRiskWithCovid = mortalityRiskNoCovid * 1.2;
+
   return (
     <VisContainer>
       <TextInVisualisation
         base={baseRate}
-        noCovid={relativeRisk}
-        withCovid={relativeRisk}
+        noCovid={mortalityRiskNoCovid}
+        withCovid={mortalityRiskWithCovid}
       />
       <ForceDirected id="force-directed" deathRate={baseRate} position={0} />
-      <ForceDirected id="force-directed" deathRate={3.4} position={1} />
       <ForceDirected
         id="force-directed"
-        deathRate={baseRate * relativeRisk}
+        deathRate={mortalityRiskNoCovid}
+        position={1}
+      />
+      <ForceDirected
+        id="force-directed"
+        deathRate={mortalityRiskWithCovid}
         position={2}
       />
 
