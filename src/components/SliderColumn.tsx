@@ -56,7 +56,7 @@ interface Column {
 }
 const Column = styled.div`
   max-height: 100%;
-  margin-top: 50px;
+  margin: 50px 20px 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -97,4 +97,5 @@ const Subtitle = styled(T.P3)`
 const Writing = styled.div``;
 const Wrapper = styled.div`
   position: relative;
+  bottom: 0;
 `;

@@ -42,12 +42,9 @@ export default function SliderPanel({
         lowerLabel="it doesnt affect me at all"
         upperLabel="it affects me severly"
       />
-
-      <Arrow
-        src={arrow}
-        sliderPanelOpen={sliderPanelOpen}
-        onClick={() => setSliderPanelOpen(!sliderPanelOpen)}
-      />
+      <ArrowWrapper onClick={() => setSliderPanelOpen(!sliderPanelOpen)}>
+        <Arrow src={arrow} sliderPanelOpen={sliderPanelOpen} />
+      </ArrowWrapper>
     </Container>
   );
 }
@@ -74,7 +71,7 @@ const Container = styled.div`
       `;
     } else {
       return `
-        height: 50px;
+        height: 45px;
       `;
     }
   }}
@@ -118,4 +115,11 @@ const Arrow = styled.img`
   top: 10px;
   transform: ${({ sliderPanelOpen }: Arrow) =>
     sliderPanelOpen ? null : 'rotate(180deg)'};
+`;
+const ArrowWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  cursor: pointer;
 `;
