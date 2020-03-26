@@ -10,9 +10,10 @@ import { colors } from '../colors';
 
 interface Props {
   setBaseRate: (baseRate: number) => void;
+  setPage: any;
 }
 
-export default function UserInputsPanel({ setBaseRate }: Props) {
+export default function UserInputsPanel({ setBaseRate, setPage }: Props) {
   const [age, setAge] = useState<number>();
   const [sex, setSex] = useState('');
 
@@ -43,6 +44,11 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
   function multiplyRate(age: number, sex: number, conditions: number) {
     return age * sex * conditions;
   }
+
+  function handleCalculate() {
+    calculateBaseRate();
+    setPage(1);
+  }
   const haveValues = sex && age;
   return (
     <Container>
@@ -56,7 +62,7 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
         <Sex sex={sex} setSex={setSex} />
         <Conditions conditions={conditions} setConditions={setConditions} />
       </Inputs>
-      <ButtonStyled onClick={calculateBaseRate} disabled={!haveValues}>
+      <ButtonStyled onClick={handleCalculate} disabled={!haveValues}>
         Calculate
       </ButtonStyled>
     </Container>

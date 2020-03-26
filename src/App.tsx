@@ -8,11 +8,13 @@ import Right from './components/Right';
 
 const App = () => {
   const [baseRate, setBaseRate] = useState(2);
+  const [page, setPage] = useState();
+  console.log('page:', page);
 
   return (
     <Container>
-      <UserInputsPanel setBaseRate={setBaseRate} />
-      <Right baseRate={baseRate} />
+      <UserInputsPanel setBaseRate={setBaseRate} setPage={setPage} />
+      <Right baseRate={baseRate} page={page} setPage={setPage} />
     </Container>
   );
 };

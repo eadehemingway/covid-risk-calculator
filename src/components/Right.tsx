@@ -4,9 +4,8 @@ import PageOne from './PageOne';
 import PageTwo from './PageTwo';
 import PageThree from './PageThree';
 
-export default function Right({ baseRate }) {
+export default function Right({ baseRate, page, setPage }) {
   const [relativeRisk, setRelativeRisk] = useState(2);
-  const [page, setPage] = useState(1);
 
   function getVisualisation() {
     switch (page) {
@@ -24,6 +23,8 @@ export default function Right({ baseRate }) {
         return <PageTwo page={page} setPage={setPage} />;
       case 3:
         return <PageThree page={page} setPage={setPage} />;
+      default:
+        return null;
     }
   }
   return <Container>{getVisualisation()}</Container>;
