@@ -56,5 +56,5 @@ const ForceTitles = styled.div`
 const StatSummaries = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-bottom: 50px;
+  margin-bottom: 300px;
 `;

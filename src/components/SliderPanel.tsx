@@ -3,15 +3,20 @@ import styled from 'styled-components';
 import Slider from './Slider';
 import T from './Typography';
 import { colors } from '../colors';
+import arrow from '../assets/images/down-arrow.svg';
 
 interface Props {
-  relativeRisk: number;
-  setRelativeRisk: (relativeRisk: number) => void;
+  sliderPanelOpen: boolean;
+  setSliderPanelOpen: any;
 }
 
-export default function SliderPanel({ relativeRisk, setRelativeRisk }: Props) {
+export default function SliderPanel({
+  sliderPanelOpen,
+  setSliderPanelOpen,
+}: Props) {
+  const height = sliderPanelOpen ? 200 : 50;
   return (
-    <Container>
+    <Container style={{ height }}>
       <Title>
         Change The <br />
         Assumptions
@@ -35,16 +40,24 @@ export default function SliderPanel({ relativeRisk, setRelativeRisk }: Props) {
         <Slider id="slider-two" />
         <SliderSvg id={`slider-two`} />;
       </Column>
+      <Arrow
+        src={arrow}
+        sliderPanelOpen={sliderPanelOpen}
+        onClick={() => setSliderPanelOpen(!sliderPanelOpen)}
+      />
     </Container>
   );
 }
 
 const Container = styled.div`
-  min-height: 200px;
   min-width: 100%;
   border-top: 1px solid ${colors.orange};
   display: flex;
   justify-content: space-between;
+  transition: height 0.5s;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
 `;
 const Column = styled.div`
   width: 30%;
@@ -62,5 +75,18 @@ const SliderSvg = styled.svg`
 `;
 const Title = styled(T.H3)`
   margin-left: 30px;
-  margin-top: 30px;
+  margin-top: 60px;
+`;
+
+interface Arrow {
+  sliderPanelOpen: boolean;
+}
+const Arrow = styled.img`
+  position: absolute;
+  right: 10px;
+  width: 15px;
+  cursor: pointer;
+  top: 10px;
+  transform: ${({ sliderPanelOpen }: Arrow) =>
+    sliderPanelOpen ? 'rotate(180deg)' : null};
 `;

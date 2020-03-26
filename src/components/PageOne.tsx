@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ForceDirected from './ForceDirected';
 import arrow from '../assets/images/down-arrow.svg';
@@ -13,6 +13,7 @@ export default function PageOne({
   relativeRisk,
   setRelativeRisk,
 }) {
+  const [sliderPanelOpen, setSliderPanelOpen] = useState(false);
   function movePageRight() {
     setPage(page + 1);
   }
@@ -42,15 +43,15 @@ export default function PageOne({
       <RightArrowStyled src={arrow} onClick={movePageRight} />
       <StyledSvg id="force-directed" />
       <SliderPanel
-        relativeRisk={relativeRisk}
-        setRelativeRisk={setRelativeRisk}
+        sliderPanelOpen={sliderPanelOpen}
+        setSliderPanelOpen={setSliderPanelOpen}
       />
     </VisContainer>
   );
 }
 
 const VisContainer = styled.div`
-  height: 70%;
+  height: 100%;
 `;
 const StyledSvg = styled.svg`
   width: 850px;
