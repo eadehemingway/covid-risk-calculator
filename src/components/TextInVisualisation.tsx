@@ -21,7 +21,7 @@ export default function TextInVisualisation({
         return (
           <>
             <ForceDescription
-              description="if Covid 19 had never happened:"
+              description="My estimated one year mortality risk as a 35 year old woman with x, y and z, before the current emergency."
               percentage={base}
             />
             <DummyDiv />
@@ -32,11 +32,11 @@ export default function TextInVisualisation({
         return (
           <>
             <ForceDescription
-              description="if Covid 19 had never happened:"
+              description="My estimated one year mortality risk as a 35 year old woman with x, y and z, before the current emergency."
               percentage={base}
             />
             <ForceDescription
-              description="given Covid 19's existence but assuming you dont get it:"
+              description="My estimated  one year mortality risk if my care is affected by pressures on the NHS under this current emergency (assuming I am still not invected)"
               percentage={noCovid}
             />
             <DummyDiv />
@@ -46,15 +46,15 @@ export default function TextInVisualisation({
         return (
           <>
             <ForceDescription
-              description="if Covid 19 had never happened:"
+              description="My estimated one year mortality risk as a 35 year old woman with x, y and z, before the current emergency."
               percentage={base}
             />
             <ForceDescription
-              description="given Covid 19's existence but assuming you dont get it:"
+              description="My estimated  one year mortality risk if my care is affected by pressures on the NHS under this current emergency (assuming I am still not invected)"
               percentage={noCovid}
             />
             <ForceDescription
-              description="if you get Covid 19:"
+              description="My estimated  one year mortality risk if I become infected by corona virus in this current emergency"
               percentage={withCovid}
             />
           </>

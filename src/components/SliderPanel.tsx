@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Slider from './Slider';
+import SliderColumn from './SliderColumn';
 import T from './Typography';
 import colors from '../style/colors';
 import device from '../style/device';
@@ -26,25 +26,19 @@ export default function SliderPanel({
         Change The <br />
         Assumptions
       </Title>
-      <Column>
-        <div>
-          <T.H4>Estimated extra mortality impact of the current emergency</T.H4>
-          <T.P3>
-            The lowest likely estimate of this is around 20% (equal to the
-            impact of the seasonal flu)
-          </T.P3>
-        </div>
-        <Slider id="slider-one" setVal={setNHSAffectedRate} />
-        <SliderSvg id={`slider-one`} />;
-      </Column>
-      <Column>
-        <div>
-          <T.H4>Extra mortality if I get infected with Covid</T.H4>
-          <T.P3>This is the.... it is estimted to be between .....</T.P3>
-        </div>
-        <Slider id="slider-two" setVal={setCovidMortalityRate} />
-        <SliderSvg id={`slider-two`} />;
-      </Column>
+      <SliderColumn
+        id="slider-one"
+        title="Estimated affect on the NHS of the current emergency"
+        subtitle="The lowest"
+        handleChange={setNHSAffectedRate}
+      />
+      <SliderColumn
+        id="slider-two"
+        title="Estimated mortality rate of people with my condition"
+        subtitle="blah"
+        handleChange={setCovidMortalityRate}
+      />
+
       <Arrow
         src={arrow}
         sliderPanelOpen={sliderPanelOpen}
@@ -66,6 +60,7 @@ const Container = styled.div`
   transition: height 0.5s;
   position: absolute;
   bottom: 0;
+  background: ${colors.backgroundGrey};
   overflow: hidden;
   background: white;
   ${({ open }: Container) => {
