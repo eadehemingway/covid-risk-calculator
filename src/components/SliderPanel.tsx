@@ -29,14 +29,18 @@ export default function SliderPanel({
       <SliderColumn
         id="slider-one"
         title="Estimated affect on the NHS of the current emergency"
-        subtitle="The lowest"
+        subtitle="give indication of what the upper and lower estimates are"
         handleChange={setNHSAffectedRate}
+        lowerLabel="Doesnt affect the NHS at all"
+        upperLabel="Effects the NHS significantly"
       />
       <SliderColumn
         id="slider-two"
         title="Estimated mortality rate of people with my condition"
-        subtitle="blah"
+        subtitle="give indication of what the upper and lower estimates are"
         handleChange={setCovidMortalityRate}
+        lowerLabel="it doesnt affect me at all"
+        upperLabel="it affects me severly"
       />
 
       <Arrow
@@ -66,11 +70,11 @@ const Container = styled.div`
   ${({ open }: Container) => {
     if (open) {
       return `
-        height: 200px;
+        height: 300px;
       `;
     } else {
       return `
-        height: 0;
+        height: 50px;
       `;
     }
   }}
@@ -95,21 +99,6 @@ const Container = styled.div`
       }
     }}
   }
-`;
-
-const Column = styled.div`
-  width: 30%;
-  min-height: 100%;
-  max-height: 100%;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const SliderSvg = styled.svg`
-  width: 200px;
-  height: 100px;
 `;
 
 const Title = styled(T.H3)`

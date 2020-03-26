@@ -3,39 +3,26 @@ import styled from 'styled-components';
 import * as d3 from 'd3';
 import colors from '../style/colors';
 
-export default function Slider({ id, setVal }) {
+export default function Slider({ id, setVal, columnWidth }) {
   useEffect(() => {
     const yVal = 40;
     const padding = 20;
     const maxVal = 20;
-    const svgWidth = 300;
+
     const xScale = d3
       .scaleLinear()
       .domain([10, maxVal])
-      .range([padding, svgWidth - padding])
+      .range([0, columnWidth])
       .clamp(true);
     const svg = d3.select(`#${id}`);
     svg
       .append('line')
-      .attr('x1', 0 + padding)
+      .attr('x1', 0)
       .attr('x2', xScale(maxVal))
       .attr('y1', yVal)
       .attr('y2', yVal)
       .attr('stroke', colors.brown)
       .attr('stroke-width', 2);
-
-    // svg
-    //   .selectAll(`.${id}-labels`)
-    //   .data(sliderLabels)
-    //   .enter()
-    //   .append('text')
-    //   .attr('font-family', 'Lexend')
-    //   .attr('font-size', '12px')
-    //   .text((d: string) => d)
-    //   .attr('x', (d, i) => {
-    //     return i === 0 ? padding : svgWidth - padding;
-    //   })
-    //   .attr('y', yVal - 15);
 
     const drag = d3.drag().on('drag', d => {
       const handle = d3.selectAll(`#${id} circle`);
@@ -58,7 +45,7 @@ export default function Slider({ id, setVal }) {
       .attr('stroke-width', 2)
       .attr('cursor', 'pointer')
       .call(s => drag(s));
-  }, [id, setVal]);
+  }, [columnWidth, id, setVal]);
 
   return null;
 }
