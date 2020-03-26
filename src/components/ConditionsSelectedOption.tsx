@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import * as TS from '../types';
 import { T } from './Typography';
 import cross from '../cross.svg';
+import { colors } from '../colors';
 
 interface Props {
   condition: TS.Condition;
@@ -31,7 +32,7 @@ const Container = styled.div`
   border-radius: 3px;
   display: flex;
   align-items: center;
-  border: 1px solid colors.orange;
+  border: 1px solid ${colors.orange};
   margin: 2px;
   cursor: pointer;
 `;

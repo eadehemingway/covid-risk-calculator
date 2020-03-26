@@ -6,6 +6,7 @@ import InputWrapper from './InputWrapper';
 import ConditionsDropdown from './ConditionsDropdown';
 import Selected from './ConditionsSelected';
 import T from './Typography';
+import { colors } from '../colors';
 
 interface Props {
   conditions: TS.Condition[];
@@ -86,8 +87,8 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  border: 1px solid colors.orange;
-  outline-color: colors.orange;
+  border: 1px solid ${colors.orange};
+  outline-color: ${colors.orange};
   padding: 0 10px;
   margin-bottom: 20px;
   font-size: 16px;

@@ -23,7 +23,7 @@ export default function BarChart({ id }: Props) {
   }, []);
 
   useEffect(() => {
-    const yOffset = 150;
+    const yOffset = 50;
     const xOffset = 180;
     const stringArr = data.map(d => d.id);
 

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import arrow from '../assets/images/down-arrow.svg';
 import BarChart from './BarChart';
+import T from './Typography';
 
 export default function PageThree({ page, setPage }) {
   function movePageLeft() {
@@ -10,6 +11,8 @@ export default function PageThree({ page, setPage }) {
 
   return (
     <VisContainer>
+      <Title>Mortality risk in context</Title>
+      <SubTitle>compare one year mortality of different condition(s)</SubTitle>
       <LeftArrowStyled src={arrow} onClick={movePageLeft} />
       <BarChart id="bar-chart" />
       <StyledSvg id="bar-chart" />
@@ -18,7 +21,6 @@ export default function PageThree({ page, setPage }) {
 }
 
 const VisContainer = styled.div`
-  /* position: absolute; */
   width: 100%;
 `;
 const StyledSvg = styled.svg`
@@ -33,4 +35,13 @@ const LeftArrowStyled = styled.img`
   left: 0;
   top: 40%;
   cursor: pointer;
+`;
+
+const Title = styled(T.H3)`
+  margin-left: 120px;
+  margin-top: 100px;
+`;
+
+const SubTitle = styled(T.P2)`
+  margin-left: 120px;
 `;
