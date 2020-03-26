@@ -43,7 +43,7 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
   function multiplyRate(age: number, sex: number, conditions: number) {
     return age * sex * conditions;
   }
-
+  const haveValues = sex && age;
   return (
     <Container>
       <Title>
@@ -56,7 +56,9 @@ export default function UserInputsPanel({ setBaseRate }: Props) {
         <Sex sex={sex} setSex={setSex} />
         <Conditions conditions={conditions} setConditions={setConditions} />
       </Inputs>
-      <ButtonStyled onClick={calculateBaseRate}>Calculate</ButtonStyled>
+      <ButtonStyled onClick={calculateBaseRate} disabled={!haveValues}>
+        Calculate
+      </ButtonStyled>
     </Container>
   );
 }
@@ -80,6 +82,10 @@ const Inputs = styled.div`
   border-bottom: 1px solid ${colors.orange};
 `;
 
+interface ButtonStyled {
+  disabled: boolean;
+}
+
 const ButtonStyled = styled.button`
   background: ${colors.orange};
   color: white;
@@ -91,4 +97,7 @@ const ButtonStyled = styled.button`
   border: none;
   margin: 20px;
   align-self: flex-end;
+  cursor: pointer;
+  outline-color: ${colors.orange};
+  opacity: ${({ disabled }: ButtonStyled) => (disabled ? 0.5 : 1)};
 `;
