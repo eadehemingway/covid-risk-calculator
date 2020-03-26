@@ -14,9 +14,10 @@ export default function Selected({ conditions, unselectCondition }: Props) {
 
   return (
     <Container>
-      {conditions.map((condition: TS.Condition) => {
+      {conditions.map((condition: TS.Condition, i) => {
         return (
           <Condition
+            key={i}
             condition={condition}
             unselectCondition={unselectCondition}
           />

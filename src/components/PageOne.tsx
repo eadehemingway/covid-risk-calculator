@@ -17,7 +17,39 @@ export default function PageOne({
   function movePageRight() {
     setPage(page + 1);
   }
-
+  function getVisualisation() {
+    switch (page) {
+      case 1:
+        return (
+          <ForceDirected
+            id="force-directed"
+            deathRate={baseRate}
+            position={0}
+            x={150}
+          />
+        );
+      case 2:
+        return (
+          <ForceDirected
+            id="force-directed"
+            deathRate={mortalityRiskNoCovid}
+            position={1}
+            x={700}
+          />
+        );
+      case 3:
+        return (
+          <ForceDirected
+            id="force-directed"
+            deathRate={mortalityRiskWithCovid}
+            position={2}
+            x={300}
+          />
+        );
+      default:
+        return null;
+    }
+  }
   const mortalityRiskNoCovid = baseRate * relativeRisk;
   const mortalityRiskWithCovid = mortalityRiskNoCovid * 1.2;
 
@@ -28,17 +60,7 @@ export default function PageOne({
         noCovid={mortalityRiskNoCovid}
         withCovid={mortalityRiskWithCovid}
       />
-      <ForceDirected id="force-directed" deathRate={baseRate} position={0} />
-      <ForceDirected
-        id="force-directed"
-        deathRate={mortalityRiskNoCovid}
-        position={1}
-      />
-      <ForceDirected
-        id="force-directed"
-        deathRate={mortalityRiskWithCovid}
-        position={2}
-      />
+      {getVisualisation()}
 
       <RightArrowStyled src={arrow} onClick={movePageRight} />
       <StyledSvg id="force-directed" />
@@ -54,7 +76,7 @@ const VisContainer = styled.div`
   height: 100%;
 `;
 const StyledSvg = styled.svg`
-  width: 850px;
+  width: 950px;
   height: 600px;
   position: absolute;
   top: 0;

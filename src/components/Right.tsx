@@ -8,8 +8,8 @@ export default function Right({ baseRate, page, setPage }) {
   const [relativeRisk, setRelativeRisk] = useState(2);
 
   function getVisualisation() {
-    switch (page) {
-      case 1:
+    switch (true) {
+      case page < 4:
         return (
           <PageOne
             baseRate={baseRate}
@@ -19,9 +19,9 @@ export default function Right({ baseRate, page, setPage }) {
             setRelativeRisk={setRelativeRisk}
           />
         );
-      case 2:
+      case page === 4:
         return <PageTwo page={page} setPage={setPage} />;
-      case 3:
+      case page === 5:
         return <PageThree page={page} setPage={setPage} />;
       default:
         return null;

@@ -35,9 +35,13 @@ export default function Drawer({
 
   return (
     <Container open={dropdownOpen}>
-      {filteredConditions.map(condition => {
+      {filteredConditions.map((condition, i) => {
         return (
-          <Condition condition={condition} selectCondition={selectCondition} />
+          <Condition
+            key={i}
+            condition={condition}
+            selectCondition={selectCondition}
+          />
         );
       })}
     </Container>

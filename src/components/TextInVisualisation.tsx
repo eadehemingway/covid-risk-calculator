@@ -12,7 +12,7 @@ interface Props {
 export default function TextInVisualisation({ base, noCovid, withCovid }) {
   return (
     <StatSummaries>
-      <ForceDescription
+      {/* <ForceDescription
         description="if Covid 19 had never happened:"
         percentage={base}
       />
@@ -23,7 +23,7 @@ export default function TextInVisualisation({ base, noCovid, withCovid }) {
       <ForceDescription
         description="if you get Covid 19:"
         percentage={withCovid}
-      />
+      /> */}
     </StatSummaries>
   );
 }
