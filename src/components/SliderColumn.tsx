@@ -56,15 +56,17 @@ const LabelWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
-
   position: absolute;
-  top: -20px;
+  bottom: 71px;
 `;
 
 const SliderSvg = styled.svg`
-  width: ${({ columnWidth }: Column) => columnWidth}px;
+  width: ${({ columnWidth }: Column) => columnWidth + 40}px;
   height: 60px;
-
+  position: absolute;
+  left: -20px;
+  bottom: 0;
+  border: 2px solid red;
   margin-bottom: 40px;
 `;
 

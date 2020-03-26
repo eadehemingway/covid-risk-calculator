@@ -17,8 +17,8 @@ export default function Slider({ id, setVal, columnWidth }) {
     const svg = d3.select(`#${id}`);
     svg
       .append('line')
-      .attr('x1', 0)
-      .attr('x2', xScale(maxVal))
+      .attr('x1', 0 + padding)
+      .attr('x2', xScale(maxVal) + padding)
       .attr('y1', yVal)
       .attr('y2', yVal)
       .attr('stroke', colors.brown)
@@ -26,7 +26,10 @@ export default function Slider({ id, setVal, columnWidth }) {
 
     const drag = d3.drag().on('drag', d => {
       const handle = d3.selectAll(`#${id} circle`);
-      if (d3.event.x > xScale(0) && d3.event.x < xScale(maxVal)) {
+      if (
+        d3.event.x > xScale(0) + padding &&
+        d3.event.x < xScale(maxVal) + padding
+      ) {
         const xVal = d3.event.x;
         const sliderVal = xScale.invert(xVal);
 
