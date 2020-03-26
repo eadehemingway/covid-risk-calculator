@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Slider from './Slider';
+
 import T from './Typography';
 import { colors } from '../colors';
 import arrow from '../assets/images/down-arrow.svg';
+import SliderColumn from './SliderColumn'
 
 interface Props {
   sliderPanelOpen: boolean;
@@ -18,32 +19,26 @@ export default function SliderPanel({
   setNHSAffectedRate,
   setCovidMortalityRate,
 }: Props) {
-  const height = sliderPanelOpen ? 200 : 50;
+  const height = sliderPanelOpen ? 300 : 50;
+
   return (
     <Container style={{ height }}>
       <Title>
         Change The <br />
         Assumptions
       </Title>
-      <Column>
-        <div>
-          <T.H4>Estimated extra mortality impact of the current emergency</T.H4>
-          <T.P3>
-            The lowest likely estimate of this is around 20% (equal to the
-            impact of the seasonal flu)
-          </T.P3>
-        </div>
-        <Slider id="slider-one" setVal={setNHSAffectedRate} />
-        <SliderSvg id={`slider-one`} />;
-      </Column>
-      <Column>
-        <div>
-          <T.H4>Extra mortality if I get infected with Covid</T.H4>
-          <T.P3>This is the.... it is estimted to be between .....</T.P3>
-        </div>
-        <Slider id="slider-two" setVal={setCovidMortalityRate} />
-        <SliderSvg id={`slider-two`} />;
-      </Column>
+
+    <SliderColumn 
+    id="slider-one" 
+    title="Estimated affect on the NHS of the current emergency" 
+    subtitle="The lowest" 
+    handleChange={setNHSAffectedRate}
+    />
+      <SliderColumn 
+      id="slider-two" 
+      title="Estimated mortality rate of people with my condition" 
+      subtitle="blah" handleChange={setCovidMortalityRate}/>
+
       <Arrow
         src={arrow}
         sliderPanelOpen={sliderPanelOpen}
@@ -61,22 +56,10 @@ const Container = styled.div`
   transition: height 0.5s;
   position: absolute;
   bottom: 0;
+  background: ${colors.backgroundGrey};
   overflow: hidden;
 `;
-const Column = styled.div`
-  width: 30%;
-  min-height: 100%;
-  max-height: 100%;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
 
-const SliderSvg = styled.svg`
-  width: 200px;
-  height: 100px;
-`;
 const Title = styled(T.H3)`
   margin-left: 30px;
   margin-top: 50px;

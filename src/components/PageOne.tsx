@@ -90,6 +90,7 @@ export default function PageOne({
         return null;
     }
   }
+  const svgWidth = (window.innerWidth / 100) * 70;
 
   return (
     <VisContainer>
@@ -102,7 +103,7 @@ export default function PageOne({
       {getVisualisation()}
 
       <RightArrowStyled src={arrow} onClick={movePageRight} />
-      <StyledSvg id="force-directed" />
+      <StyledSvg id="force-directed" style={{ width: svgWidth }} />
       <SliderPanel
         sliderPanelOpen={sliderPanelOpen}
         setSliderPanelOpen={setSliderPanelOpen}
@@ -117,7 +118,6 @@ const VisContainer = styled.div`
   height: 100%;
 `;
 const StyledSvg = styled.svg`
-  width: 950px;
   height: 600px;
   position: absolute;
   top: 0;

@@ -38,7 +38,7 @@ export default function ForceDirected({ deathRate, position, id, x }: Props) {
 
     d3.forceSimulation(data)
       .force('collision', collision)
-      .force('center', d3.forceCenter(x, 700 / 2))
+      .force('center', d3.forceCenter(x, 300))
       .on('tick', () => {
         // call the tick function running the simulation
         d3.selectAll(`.circle-${position}`)

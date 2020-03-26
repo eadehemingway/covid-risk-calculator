@@ -8,7 +8,7 @@ export default function Slider({ id, setVal }) {
     const yVal = 40;
     const padding = 20;
     const maxVal = 20;
-    const svgWidth = 200;
+    const svgWidth = 300;
     const xScale = d3
       .scaleLinear()
       .domain([10, maxVal])
@@ -21,8 +21,21 @@ export default function Slider({ id, setVal }) {
       .attr('x2', xScale(maxVal))
       .attr('y1', yVal)
       .attr('y2', yVal)
-      .attr('stroke', colors.orange)
-      .attr('stroke-width', 4);
+      .attr('stroke', colors.brown)
+      .attr('stroke-width', 2);
+
+    // svg
+    //   .selectAll(`.${id}-labels`)
+    //   .data(sliderLabels)
+    //   .enter()
+    //   .append('text')
+    //   .attr('font-family', 'Lexend')
+    //   .attr('font-size', '12px')
+    //   .text((d: string) => d)
+    //   .attr('x', (d, i) => {
+    //     return i === 0 ? padding : svgWidth - padding;
+    //   })
+    //   .attr('y', yVal - 15);
 
     const drag = d3.drag().on('drag', d => {
       const handle = d3.selectAll(`#${id} circle`);
