@@ -6,7 +6,14 @@ import PageOne from './PageOne';
 import PageTwo from './PageTwo';
 import PageThree from './PageThree';
 
-export default function Right({ baseRate, page, setPage }) {
+export default function Right({
+  baseRate,
+  page,
+  setPage,
+  age,
+  sex,
+  conditions,
+}) {
   const [relativeRisk, setRelativeRisk] = useState(2);
 
   function getVisualisation() {
@@ -19,10 +26,21 @@ export default function Right({ baseRate, page, setPage }) {
             page={page}
             setPage={setPage}
             setRelativeRisk={setRelativeRisk}
+            age={age}
+            sex={sex}
+            conditions={conditions}
           />
         );
       case page === 4:
-        return <PageTwo page={page} setPage={setPage} />;
+        return (
+          <PageTwo
+            page={page}
+            setPage={setPage}
+            age={age}
+            sex={sex}
+            conditions={conditions}
+          />
+        );
       case page === 5:
         return <PageThree page={page} setPage={setPage} />;
       default:

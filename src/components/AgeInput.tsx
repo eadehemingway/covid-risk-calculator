@@ -13,6 +13,7 @@ export default function Age({ age, setAge }: Props) {
     const target = e.target as HTMLInputElement;
     const { value } = target;
     const number = Number(value);
+    if (isNaN(number)) return;
     setAge(number);
   }
 

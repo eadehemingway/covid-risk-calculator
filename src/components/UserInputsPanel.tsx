@@ -13,13 +13,25 @@ import Header from './Header';
 interface Props {
   setBaseRate: (baseRate: number) => void;
   setPage: any;
+  age: number;
+  sex: string;
+  conditions: TS.Condition[];
+  setAge: any;
+  setSex: any;
+  setConditions: any;
 }
 
-export default function UserInputsPanel({ setBaseRate, setPage }: Props) {
-  const [age, setAge] = useState<number>();
-  const [sex, setSex] = useState('');
+export default function UserInputsPanel({
+  setBaseRate,
+  setPage,
+  age,
+  sex,
+  conditions,
+  setAge,
+  setSex,
+  setConditions,
+}: Props) {
   const [mobileOpen, setMobileOpen] = useState(true);
-  const [conditions, setConditions] = useState<TS.Condition[]>([]);
 
   function openOnMobile() {
     setMobileOpen(true);
@@ -92,7 +104,7 @@ interface Container {
 }
 
 const MobileDrawer = styled.div`
-  width: 400px;
+  width: 30%;
   background: white;
   transition: max-width 0.3s;
   overflow: hidden;
@@ -105,6 +117,7 @@ const MobileDrawer = styled.div`
     ${({ open }: Container) => {
       if (open) {
         return `
+
           max-width: 400px;
         `;
       } else {
@@ -120,7 +133,6 @@ const MobileDrawer = styled.div`
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  width: 400px;
   overflow: scroll;
   display: flex;
   flex-direction: column;

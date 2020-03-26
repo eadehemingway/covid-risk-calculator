@@ -4,7 +4,7 @@ import arrow from '../images/down-arrow.svg';
 import ColumnChart from './ColumnChart';
 import T from './Typography';
 
-export default function PageTwo({ page, setPage }) {
+export default function PageTwo({ page, setPage, age, sex, conditions }) {
   function movePageRight() {
     setPage(page + 1);
   }

@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import T from './Typography';
 import ForceDescription from './ForceDescription';
+import * as TS from '../types';
 
 interface Props {
   base: number;
   noCovid: number;
   withCovid: number;
+  age: number;
+  sex: string;
+  conditions: TS.Condition[];
 }
 
 export default function TextInVisualisation({
@@ -14,16 +18,27 @@ export default function TextInVisualisation({
   noCovid,
   withCovid,
   page,
+  age,
+  sex,
+  conditions,
 }) {
+  function getInitialString() {
+    const sexStr = sex === 'Female' ? 'Woman' : 'Male';
+    const conditionsStr =
+      conditions.length === 0 ? 'no existing health conditions' : conditions[0];
+    return `My estimated one year mortality risk as a ${age} year old ${sexStr} with ${conditionsStr}`;
+  }
+  const descriptions = [
+    `${getInitialString()}, before the current emergency. i.e. if corona virus had never happened`,
+    'My estimated  one year mortality risk  if my care is affected by pressures on the NHS due to the current emergency (assuming I am still not invected)',
+    'My estimated  one year mortality risk if I become infected by corona virus in this current emergency',
+  ];
   function getText() {
     switch (page) {
       case 1:
         return (
           <>
-            <ForceDescription
-              description="My estimated one year mortality risk as a 35 year old woman with x, y and z, before the current emergency."
-              percentage={base}
-            />
+            <ForceDescription description={descriptions[0]} percentage={base} />
             <DummyDiv />
             <DummyDiv />
           </>
@@ -31,12 +46,9 @@ export default function TextInVisualisation({
       case 2:
         return (
           <>
+            <ForceDescription description={descriptions[0]} percentage={base} />
             <ForceDescription
-              description="My estimated one year mortality risk as a 35 year old woman with x, y and z, before the current emergency."
-              percentage={base}
-            />
-            <ForceDescription
-              description="My estimated  one year mortality risk if my care is affected by pressures on the NHS under this current emergency (assuming I am still not invected)"
+              description={descriptions[1]}
               percentage={noCovid}
             />
             <DummyDiv />
@@ -45,16 +57,13 @@ export default function TextInVisualisation({
       case 3:
         return (
           <>
+            <ForceDescription description={descriptions[0]} percentage={base} />
             <ForceDescription
-              description="My estimated one year mortality risk as a 35 year old woman with x, y and z, before the current emergency."
-              percentage={base}
-            />
-            <ForceDescription
-              description="My estimated  one year mortality risk if my care is affected by pressures on the NHS under this current emergency (assuming I am still not invected)"
+              description={descriptions[1]}
               percentage={noCovid}
             />
             <ForceDescription
-              description="My estimated  one year mortality risk if I become infected by corona virus in this current emergency"
+              description={descriptions[2]}
               percentage={withCovid}
             />
           </>

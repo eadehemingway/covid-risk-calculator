@@ -13,9 +13,11 @@ export default function PageOne({
   baseRate,
   relativeRisk,
   setRelativeRisk,
+  age,
+  sex,
+  conditions,
 }) {
   const [sliderPanelOpen, setSliderPanelOpen] = useState(false);
-  const [comingFromLeft, setComingFromLeft] = useState(false);
   const [covidMortalityRate, setCovidMortalityRate] = useState(0.2);
 
   function toggleControls() {
@@ -23,7 +25,6 @@ export default function PageOne({
   }
 
   function movePageRight() {
-    setComingFromLeft(true);
     setPage(page + 1);
   }
 
@@ -105,6 +106,9 @@ export default function PageOne({
         base={baseRate}
         noCovid={mortalityRiskNoCovid}
         withCovid={mortalityRiskWithCovid}
+        age={age}
+        sex={sex}
+        conditions={conditions}
       />
       {getVisualisation()}
       <RightArrowStyled src={arrow} onClick={movePageRight} />
